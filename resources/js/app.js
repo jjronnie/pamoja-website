@@ -1,7 +1,28 @@
-import './bootstrap';
+import './bootstrap'
+import './custom'
 
-import Alpine from 'alpinejs';
+import Alpine from 'alpinejs'
 
-window.Alpine = Alpine;
+import { createIcons, icons } from 'lucide'
 
-Alpine.start();
+
+import './custom.js';
+
+
+
+window.Alpine = Alpine
+Alpine.start()
+
+document.addEventListener('DOMContentLoaded', () => {
+    createIcons({ icons })
+})
+
+
+
+
+
+
+
+
+
+
