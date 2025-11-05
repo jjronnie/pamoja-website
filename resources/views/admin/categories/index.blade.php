@@ -5,12 +5,11 @@
     <!-- Controls -->
     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
         <div class="flex flex-col sm:flex-row gap-4">
-            
-  <a class="btn" href="{{ route('categories.create') }}"><i data-lucide="plus" class="w-4 h-4 mr-2"></i>Create New Category</a>
 
+            @include('admin.categories.partials.create')
 
         </div>
-      
+
 
     </div>
 
@@ -32,9 +31,14 @@
             <x-table.cell>-</x-table.cell>
             <x-table.cell>{{ $category->created_at ?? '' }}</x-table.cell>
             <x-table.cell>
-                <a class="btn" href=""> <i data-lucide="eye" class="w-4 h-4"></i></a>
-                <a class="btn" href=""> <i data-lucide="edit" class="w-4 h-4"></i></a>
+                <div class="flex items-center space-x-2">
+                    @include('admin.categories.partials.edit')
 
+                    <x-confirm-modal :action="route('admin.categories.destroy', $category->id)"
+                        warning="Are you sure you want to delete this Category? This action cannot be undone."
+                        triggerIcon="trash-2" />
+
+                </div>
 
             </x-table.cell>
 

@@ -35,11 +35,19 @@
             </a>
             <div class="space-y-1">
 
-                <a href="{{ route('categories.index') }}"
-                    class="sidebar-link {{ request()->routeIs('categories.*') ? 'sidebar-link-active' : '' }}">
+                <a href="{{ route('admin.categories.index') }}"
+                    class="sidebar-link {{ request()->routeIs('admin.categories.*') ? 'sidebar-link-active' : '' }}">
 
                     <i data-lucide="package" class="w-4 h-4 text-white"></i>
                     <span>Categories</span>
+                </a>
+
+
+                  <a href="{{ route('admin.properties.index') }}"
+                    class="sidebar-link {{ request()->routeIs('admin.properties.*') ? 'sidebar-link-active' : '' }}">
+
+                    <i data-lucide="house" class="w-4 h-4 text-white"></i>
+                    <span>Properties</span>
                 </a>
 
 

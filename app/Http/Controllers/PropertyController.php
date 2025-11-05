@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Http\Requests\StorePropertyRequest;
@@ -13,17 +14,23 @@ class PropertyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+   public function index()
     {
-        //
+        // Eager load the relationships
+        $properties = Property::with(['categories', 'creator', 'media'])
+            ->latest() 
+            ->paginate(50); 
+
+        return view('admin.properties.index', compact('properties'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+public function create()
     {
-        //
+        $categories = Category::orderBy('name')->get();
+        return view('admin.properties.create', compact('categories'));
     }
 
     /**
@@ -46,25 +53,31 @@ class PropertyController extends Controller
         // Handle Gallery Photos
         $this->uploadMedia($property, $request, 'photos');
 
-        return redirect()->route('properties.show', $property)->with('success', 'Property created!');
+        return redirect()->route('admin.properties.show', $property)->with('success', 'Property created!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+   public function show(Property $property)
     {
-        //
+        $property->load(['categories', 'creator', 'media']);
+
+        return view('admin.properties.show', compact('property'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+  public function edit(Property $property)
     {
-        //
-    }
+        // Load the property's current categories for pre-selection
+        $property->load('categories'); 
 
+        $categories = Category::orderBy('name')->get();
+
+        return view('admin.properties.edit', compact('property', 'categories'));
+    }
     /**
      * Update the specified resource in storage.
      */
@@ -84,15 +97,20 @@ class PropertyController extends Controller
         $this->uploadMedia($property, $request, 'photos', 'photos');
 
 
-        return redirect()->route('properties.show', $property)->with('success', 'Property updated!');
+        return redirect()->route('admin.properties.show', $property)->with('success', 'Property updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+ public function destroy(Property $property)
     {
-        //
+        $property->delete();
+        
+      
+    
+
+        return redirect()->route('admin.properties.index')->with('success', 'Property deleted.');
     }
 
     private function uploadMedia(Property $property, Request $request, string $requestField, string $collectionName = null)
@@ -127,4 +145,5 @@ class PropertyController extends Controller
             }
         }
     }
+    
 }

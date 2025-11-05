@@ -14,10 +14,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-Route::resource('categories', CategoryController::class);
-Route::resource('properties', PropertyController::class);
 
 
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('properties', PropertyController::class);
+        Route::resource('categories', CategoryController::class);
+    });
 
 
 
@@ -28,4 +30,4 @@ Route::resource('properties', PropertyController::class);
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

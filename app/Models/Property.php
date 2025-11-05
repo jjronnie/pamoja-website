@@ -37,8 +37,7 @@ class Property extends Model implements HasMedia
     {
         return SlugOptions::create()
             ->generateSlugsFrom('name')
-            ->saveSlugsTo('slug')
-            ->onUpdate(true); // Regenerate slug if name changes
+            ->saveSlugsTo('slug');
     }
 
     /**
@@ -51,8 +50,7 @@ class Property extends Model implements HasMedia
             ->singleFile();
 
         // This collection can hold up to 5 files.
-        $this->addMediaCollection('photos')
-            ->collectionSize(5); // Enforces the max 5 file limit
+        $this->addMediaCollection('photos');
     }
 
     /**
@@ -71,6 +69,15 @@ class Property extends Model implements HasMedia
             ->format('webp')
             ->quality(70)
             ->performOnCollections('featured_image', 'photos');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($property) {
+            $property->clearMediaCollection('featured_image');
+            $property->clearMediaCollection('photos');
+        });
     }
 
     /**
