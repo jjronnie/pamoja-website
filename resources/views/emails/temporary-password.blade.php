@@ -36,7 +36,7 @@ Sign In Now
 
 <x-mail::subcopy>
 
-For the safety of your account, you will be immediately **prompted to change this temporary OTP** to a new, strong password upon successful sign-in. This is a crucial step to secure your membership account.
+For the safety of your account, you will be immediately **prompted to change this temporary OTP** to a new, strong password upon successful sign-in. This is a crucial step to secure your admin account.
 </x-mail::subcopy>
 
 If you have any issues signing in, please contact the system administrator.

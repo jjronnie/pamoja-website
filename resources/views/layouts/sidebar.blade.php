@@ -1,23 +1,28 @@
 <div class="w-80 lg:w-64 bg-[#001529] text-white flex flex-col fixed top-0 left-0 h-screen z-40 lg:z-[10000] transform transition-transform duration-300 -translate-x-full lg:translate-x-0"
     id="sidebar">
-    <!-- Sidebar Header -->
 
-    <div class="sidebar-header">
-        <div class="flex text-center space-x-3">
-            <div class="w-full h-12 text-center rounded-lg flex   text-white font-bold text-lg">
+     <div class="sidebar-header">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10  rounded-lg flex items-center justify-center text-white font-bold text-lg">
                 <span>
                     <a href="{{ url('/') }}">
-                        <img src="{{ asset('assets/img/logom.png') }}" class="w-16 h-16 text-center" alt="LOGO">
+                        <img src="{{ asset('assets/img/logom.png') }}" alt="LOGO">
                     </a>
                 </span>
             </div>
+            <div class="flex flex-col">
+                <span class="text-center whitespace-nowrap text-white font-bold">Pamoja Chambers</span>
 
+                <span class="text-xs text-center">Admin Panel</span>
+            </div>
         </div>
         <button class="lg:hidden p-1 rounded-md hover:bg-blue-900 transition-colors" id="closeSidebar">
 
-            <i data-lucide="x" class="w-4 h-4 text-white"></i>
+            <i data-lucide="x" class="w-4 h-4  text-white"></i>
         </button>
     </div>
+
+    
 
     <!-- Scrollable Navigation Area -->
 
@@ -34,21 +39,17 @@
                 <span>Dashboard</span>
             </a>
             <div class="space-y-1">
-
                 <a href="{{ route('admin.categories.index') }}"
                     class="sidebar-link {{ request()->routeIs('admin.categories.*') ? 'sidebar-link-active' : '' }}">
-
                     <i data-lucide="package" class="w-4 h-4 text-white"></i>
                     <span>Categories</span>
                 </a>
 
-
-                  <a href="{{ route('admin.properties.index') }}"
+                <a href="{{ route('admin.properties.index') }}"
                     class="sidebar-link {{ request()->routeIs('admin.properties.*') ? 'sidebar-link-active' : '' }}">
-
                     <i data-lucide="house" class="w-4 h-4 text-white"></i>
                     <span>Properties</span>
-                </a>              
+                </a>
 
 
                 {{-- Users --}}
@@ -65,20 +66,6 @@
                     <i data-lucide="settings" class="w-4 h-4 text-white"></i>
                     <span>Settings</span>
                 </a>
-
-
-             
-
-           
-
-         
-
-
-
-
-
-
-
 
             </div>
     </div>
