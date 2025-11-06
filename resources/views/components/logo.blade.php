@@ -1,5 +1,5 @@
 <img
-    src="{{ asset('assets/img/logom.png') }}"
+    src="{{ asset('assets/img/logom.webp') }}"
     alt="Novas Logo"
     class="object-contain {{ $class }}"
     width="{{ $width }}"

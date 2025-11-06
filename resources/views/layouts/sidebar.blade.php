@@ -6,7 +6,7 @@
             <div class="w-10 h-10  rounded-lg flex items-center justify-center text-white font-bold text-lg">
                 <span>
                     <a href="{{ url('/') }}">
-                        <img src="{{ asset('assets/img/logom.png') }}" alt="LOGO">
+                        <img src="{{ asset('assets/img/logom.webp') }}" alt="LOGO">
                     </a>
                 </span>
             </div>

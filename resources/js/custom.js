@@ -80,196 +80,294 @@ function handleGesture() {
 
 
 
-    //calender event js
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-    // function calendarComponent() {
-    //     return {
-    //         today: new Date(),
-    //         selectedDate: null,
-    //         currentMonth: new Date().getMonth(),
-    //         currentYear: new Date().getFullYear(),
-    //         events: [
-    //             {
-    //                 title: "Team Meeting",
-    //                 date: "2025-07-25",
-    //                 time: "2:00 PM",
-    //             },
-    //             {
-    //                 title: "Quarterly Review",
-    //                 date: "2025-07-26",
-    //                 time: "10:00 AM",
-    //             },
-    //             {
-    //                 title: "New Hire Orientation",
-    //                 date: "2025-07-28",
-    //                 time: "9:00 AM",
-    //             },
-    //         ],
-    //         calendarDays: [],
-    //         monthNames: [
-    //             "January",
-    //             "February",
-    //             "March",
-    //             "April",
-    //             "May",
-    //             "June",
-    //             "July",
-    //             "August",
-    //             "September",
-    //             "October",
-    //             "November",
-    //             "December",
-    //         ],
-
-    //         init() {
-    //             this.selectedDate = this.formatDateISO(this.today);
-    //             this.generateCalendar();
-    //         },
-
-    //         formatDateISO(date) {
-    //             return date.toISOString().split("T")[0];
-    //         },
-
-    //         generateCalendar() {
-    //             let firstDay = new Date(this.currentYear, this.currentMonth, 1);
-    //             let startDay = firstDay.getDay();
-    //             let totalDays = new Date(
-    //                 this.currentYear,
-    //                 this.currentMonth + 1,
-    //                 0
-    //             ).getDate();
-
-    //             this.calendarDays = [];
-
-    //             for (let i = 0; i < startDay; i++) {
-    //                 this.calendarDays.push(
-    //                     new Date(
-    //                         this.currentYear,
-    //                         this.currentMonth,
-    //                         i - startDay + 1
-    //                     )
-    //                 );
-    //             }
-
-    //             for (let i = 1; i <= totalDays; i++) {
-    //                 this.calendarDays.push(
-    //                     new Date(this.currentYear, this.currentMonth, i)
-    //                 );
-    //             }
-
-    //             while (this.calendarDays.length < 42) {
-    //                 this.calendarDays.push(
-    //                     new Date(
-    //                         this.currentYear,
-    //                         this.currentMonth + 1,
-    //                         this.calendarDays.length - totalDays - startDay + 1
-    //                     )
-    //                 );
-    //             }
-    //         },
-
-    //         prevMonth() {
-    //             if (--this.currentMonth < 0) {
-    //                 this.currentMonth = 11;
-    //                 this.currentYear--;
-    //             }
-    //             this.generateCalendar();
-    //         },
-
-    //         nextMonth() {
-    //             if (++this.currentMonth > 11) {
-    //                 this.currentMonth = 0;
-    //                 this.currentYear++;
-    //             }
-    //             this.generateCalendar();
-    //         },
-
-    //         selectDate(date) {
-    //             this.selectedDate = this.formatDateISO(date);
-    //         },
-
-    //         isToday(date) {
-    //             return this.formatDateISO(date) === this.formatDateISO(this.today);
-    //         },
-
-    //         isSelected(date) {
-    //             return this.formatDateISO(date) === this.selectedDate;
-    //         },
-
-    //         hasEvent(date) {
-    //             return this.events.some((e) => e.date === this.formatDateISO(date));
-    //         },
-
-    //         get filteredEvents() {
-    //             return this.events.filter((e) => e.date === this.selectedDate);
-    //         },
-
-    //         get upcomingEvents() {
-    //             const todayISO = this.formatDateISO(this.today);
-    //             return this.events.filter((e) => e.date > todayISO);
-    //         },
-
-    //         formatDate(dateStr) {
-    //             const d = new Date(dateStr);
-    //             return d.toDateString();
-    //         },
-
-    //         get selectedDateLabel() {
-    //             const d = new Date(this.selectedDate);
-    //             return d.toDateString();
-    //         },
-    //     };
-    // }
-
-
-
-
-
-
-    //notification sound
-
-
-    const toggleButton = document.getElementById('toggleSound');
-    const toggleThumb = document.getElementById('toggleThumb');
-
-    // Load initial state
-    const soundSetting = localStorage.getItem('alertSound');
-    let isOn = soundSetting !== 'off';
-
-    if (!isOn) {
-        toggleButton.classList.remove('bg-green-500');
-        toggleButton.classList.add('bg-gray-300');
-        toggleThumb.classList.remove('translate-x-5');
-        toggleThumb.classList.add('translate-x-0');
-        toggleButton.setAttribute('aria-checked', 'false');
-    }
-
-    // Toggle click
-    toggleButton.addEventListener('click', () => {
-        isOn = !isOn;
-
-        if (isOn) {
-            toggleButton.classList.remove('bg-gray-300');
-            toggleButton.classList.add('bg-green-500');
-            toggleThumb.classList.remove('translate-x-0');
-            toggleThumb.classList.add('translate-x-5');
-            localStorage.setItem('alertSound', 'on');
-            toggleButton.setAttribute('aria-checked', 'true');
-        } else {
-            toggleButton.classList.remove('bg-green-500');
-            toggleButton.classList.add('bg-gray-300');
-            toggleThumb.classList.remove('translate-x-5');
-            toggleThumb.classList.add('translate-x-0');
-            localStorage.setItem('alertSound', 'off');
-            toggleButton.setAttribute('aria-checked', 'false');
+        // Banner Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const indicators = document.querySelectorAll('.slide-indicator');
+        
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                indicators[i].classList.remove('opacity-100');
+                indicators[i].classList.add('opacity-50');
+            });
+            
+            slides[index].classList.add('active');
+            indicators[index].classList.remove('opacity-50');
+            indicators[index].classList.add('opacity-100');
         }
-    });
-
-
-         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/serviceworker.js')
-                .then(() => console.log("Service worker registered"))
-                .catch((e) => console.error("Service worker error:", e));
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
         }
+        
+        // Auto slide every 5 seconds
+        setInterval(nextSlide, 5000);
+        
+        // Manual slide control
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Counter Animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 16);
+        }
+        
+        // Intersection Observer for counters
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.stat-counter').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('hidden');
+                backToTopBtn.classList.add('flex');
+            } else {
+                backToTopBtn.classList.add('hidden');
+                backToTopBtn.classList.remove('flex');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const offset = 80; // Height of fixed navbar
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const nav = document.querySelector('nav');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > 100) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Prevent body scroll when mobile menu is open
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    if (!isHidden && window.innerWidth < 1024) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+
+        observer.observe(mobileMenu, { attributes: true });
+
+        // Add loading animation to forms
+        // const forms = document.querySelectorAll('form');
+        // forms.forEach(form => {
+        //     form.addEventListener('submit', (e) => {
+        //         e.preventDefault();
+        //         const submitBtn = form.querySelector('button[type="submit"]');
+        //         const originalText = submitBtn.textContent;
+        //         submitBtn.textContent = 'Sending...';
+        //         submitBtn.disabled = true;
+                
+        //         // Simulate form submission
+        //         setTimeout(() => {
+        //             submitBtn.textContent = 'Message Sent!';
+        //             setTimeout(() => {
+        //                 submitBtn.textContent = originalText;
+        //                 submitBtn.disabled = false;
+        //                 form.reset();
+        //             }, 2000);
+        //         }, 1500);
+        //     });
+        // });
+
+        // Add entrance animations on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.service-card, .property-card, .bg-white.rounded-xl');
+            
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(20px)';
+                        
+                        setTimeout(() => {
+                            entry.target.style.transition = 'all 0.6s ease';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                        
+                        scrollObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(el => scrollObserver.observe(el));
+        };
+
+        // Initialize animations after page load
+        window.addEventListener('load', animateOnScroll);
+
+        // Keyboard navigation for accessibility
+        document.addEventListener('keydown', (e) => {
+            // ESC key closes mobile menu
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+            
+            // Enter key on indicators changes slides
+            if (e.key === 'Enter' && e.target.classList.contains('slide-indicator')) {
+                const slideIndex = parseInt(e.target.getAttribute('data-slide'));
+                currentSlide = slideIndex;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth >= 1024) {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            }, 250);
+        });
+
+        // Lazy load images (optional enhancement)
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                ripple.style.pointerEvents = 'none';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation via style tag
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        console.log('Pamoja Chambers website loaded successfully!');
 
 });

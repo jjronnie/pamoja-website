@@ -6,7 +6,7 @@
     >
       <div class="w-full  mx-auto py-10 px-10 ">
         <div class="flex mb-2 mx-auto items-center justify-center lg:hidden">
-           <x-logo />
+           <x-logo class="w-24 h-24"/>
         </div>
         <div class="text-center">
           <h1 class="mb-3 font-bold text-xl">Sign In to your account</h1>
