@@ -20,8 +20,9 @@ class UserSeeder extends Seeder
                 'name' => 'Ronald Juuko',
                 'password' => Hash::make('88928892'),
                 'email_verified_at' => now(),
-                'role' => 'admin',
-                'status' => 'active'
+                'role' => 'superadmin',
+                'status' => 'active',
+                'must_change_password' => true,
             ]
         );
     }

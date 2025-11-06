@@ -33,7 +33,7 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255|unique:categories,name',
             'description' => 'nullable|string|max:1000',
         ]);
-
+        $validated['created_by'] = auth()->id();
         Category::create($validated);
 
         return redirect()->route('admin.categories.index')
@@ -43,7 +43,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-   public function show(Category $category)
+    public function show(Category $category)
     {
         return view('admin.categories.show', compact('category'));
     }
@@ -51,7 +51,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-  public function edit(Category $category)
+    public function edit(Category $category)
     {
         return view('admin.categories.edit', compact('category'));
     }
@@ -74,7 +74,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-     public function destroy(Category $category)
+    public function destroy(Category $category)
     {
         $category->delete();
 

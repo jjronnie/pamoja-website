@@ -19,8 +19,7 @@
                 @endif
 
                 <div class="mb-6 text-sm text-gray-700 leading-relaxed">
-                    {{ __('Thanks for creating an account with TPOS! We need to verify your email address. Please click
-                    the link we just sent to you.') }}
+                    {{ __('To continue, we need to verify your email address. Click the link we just sent to your inbox. Didn’t get it? Click Resend and we’ll send it again. Also, check your Spam or Junk folder just in case.') }}
                 </div>
 
                 <div class="flex items-center justify-between mt-4">

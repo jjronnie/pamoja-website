@@ -16,6 +16,9 @@ class Property extends Model implements HasMedia
 {
     use HasFactory, HasSlug, InteractsWithMedia;
 
+      // this will auto load realation with eager load
+     protected $with = ['media'];
+
     protected $fillable = [
         'name',
         'slug',
@@ -45,38 +48,79 @@ class Property extends Model implements HasMedia
      */
     public function registerMediaCollections(): void
     {
-        // This collection will only ever hold one file.
-        $this->addMediaCollection('featured_image')
-            ->singleFile();
 
-        // This collection can hold up to 5 files.
-        $this->addMediaCollection('photos');
+        
+
+
+        // Featured image collection - single image
+        $this->addMediaCollection('featured')
+            ->singleFile() // Only one featured image allowed
+            ->registerMediaConversions(function (Media $media) {
+                $this->addMediaConversion('thumb')
+                    ->width(300)
+                    ->height(300)
+                    ->sharpen(10)
+                    ->format('webp')
+                    ->quality(80)
+                     ->nonQueued();
+
+                $this->addMediaConversion('preview')
+                    ->width(800)
+                    ->height(600)
+                    ->sharpen(10)
+                    ->format('webp')
+                    ->quality(80)
+                     ->nonQueued();
+            });
+
+        // Gallery collection - multiple images
+        $this->addMediaCollection('gallery')
+            ->registerMediaConversions(function (Media $media) {
+                $this->addMediaConversion('thumb')
+                    ->width(200)
+                    ->height(200)
+                    ->sharpen(10)
+                    ->format('webp')
+                    ->quality(80)
+                     ->nonQueued();
+
+                $this->addMediaConversion('large')
+                    ->width(1200)
+                    ->height(900)
+                    ->sharpen(10)
+                    ->format('webp')
+                    ->quality(80)
+                     ->nonQueued();
+            });
+    }
+    /**
+     * Helper method to check if property has featured image
+     */
+    public function hasFeaturedImage(): bool
+    {
+        return $this->hasMedia('featured');
     }
 
     /**
-     * Define media conversions for optimizing images.
+     * Helper method to get featured image URL
      */
-    public function registerMediaConversions(Media $media = null): void
+    public function getFeaturedImageUrl(string $conversion = ''): ?string
     {
-        $this->addMediaConversion('webp')
-            ->format('webp') // Convert to WebP
-            ->quality(80)    // Compress to 80% quality
-            ->performOnCollections('featured_image', 'photos'); // Apply to both collections
+        $media = $this->getFirstMedia('featured');
 
-        $this->addMediaConversion('thumb')
-            ->width(400)
-            ->height(400)
-            ->format('webp')
-            ->quality(70)
-            ->performOnCollections('featured_image', 'photos');
+        if (!$media) {
+            return null;
+        }
+
+        return $conversion ? $media->getUrl($conversion) : $media->getUrl();
     }
 
     public static function boot()
     {
         parent::boot();
         static::deleting(function ($property) {
-            $property->clearMediaCollection('featured_image');
-            $property->clearMediaCollection('photos');
+            $property->clearMediaCollection('featured');
+            $property->clearMediaCollection('gallery');
         });
     }
 

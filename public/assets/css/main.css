@@ -1,13 +1,41 @@
 body {
-  font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 
 .no-scrollbar {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
 }
+
 .no-scrollbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
-    [x-cloak] { display: none !important; }
+
+[x-cloak] {
+    display: none !important;
+}
+
+
+.flex.items-center.justify-between {
+    cursor: move;
+}
+
+.input-file {
+    @apply block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100;
+}
+
+.filepond--root {
+    font-family: inherit;
+}
+
+.filepond--panel-root {
+    @apply bg-gray-50 border-gray-300;
+}
+
+.detail-row {
+    @apply flex justify-between items-center border-gray-100 pb-2 last: border-b-0 last:pb-0;
+}

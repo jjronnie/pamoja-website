@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Http\Requests\StorePropertyRequest;
+use App\Http\Requests\UpdatePropertyRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,11 +48,20 @@ public function create()
         // Sync categories
         $property->categories()->sync($request->validated('categories'));
 
-        // Handle Featured Image
-        $this->uploadMedia($property, $request, 'featured_image');
+          // Add featured image if provided
+            if ($request->hasFile('featured_image')) {
+                $property->addMediaFromRequest('featured_image')
+                    ->toMediaCollection('featured');
+            }
 
-        // Handle Gallery Photos
-        $this->uploadMedia($property, $request, 'photos');
+            // Add gallery images if provided
+            if ($request->hasFile('gallery_images')) {
+                foreach ($request->file('gallery_images') as $image) {
+                    $property->addMedia($image)
+                        ->toMediaCollection('gallery');
+                }
+            }
+
 
         return redirect()->route('admin.properties.show', $property)->with('success', 'Property created!');
     }
@@ -62,8 +72,9 @@ public function create()
    public function show(Property $property)
     {
         $property->load(['categories', 'creator', 'media']);
+        $categories = Category::orderBy('name')->get();
 
-        return view('admin.properties.show', compact('property'));
+        return view('admin.properties.show', compact('property', 'categories'));
     }
 
     /**
@@ -72,7 +83,7 @@ public function create()
   public function edit(Property $property)
     {
         // Load the property's current categories for pre-selection
-        $property->load('categories'); 
+        $property->load('categories', 'media'); 
 
         $categories = Category::orderBy('name')->get();
 
@@ -81,7 +92,7 @@ public function create()
     /**
      * Update the specified resource in storage.
      */
-    public function update(StorePropertyRequest $request, Property $property) // Use the request again
+    public function update(UpdatePropertyRequest $request, Property $property) 
     {
         // Update property fields
         $property->update($request->validated());
@@ -89,12 +100,35 @@ public function create()
         // Re-sync categories
         $property->categories()->sync($request->validated('categories'));
 
-        // Handle Featured Image (deletes old one automatically)
-        $this->uploadMedia($property, $request, 'featured_image');
+      // Handle featured image removal
+            if ($request->input('remove_featured')) {
+                $property->clearMediaCollection('featured');
+            }
 
-        // Handle Gallery Photos (deletes ALL old ones and adds new ones)
-        // Note: 'photos' is the collection name, not the request field name
-        $this->uploadMedia($property, $request, 'photos', 'photos');
+            // Handle featured image upload (replaces existing)
+            if ($request->hasFile('featured_image')) {
+                $property->clearMediaCollection('featured');
+                $property->addMediaFromRequest('featured_image')
+                    ->toMediaCollection('featured');
+            }
+
+            // Handle gallery image removal
+            if ($request->has('remove_gallery_ids')) {
+                foreach ($request->input('remove_gallery_ids') as $mediaId) {
+                    $media = $property->media()->find($mediaId);
+                    if ($media) {
+                        $media->delete();
+                    }
+                }
+            }
+
+            // Handle new gallery images
+            if ($request->hasFile('gallery_images')) {
+                foreach ($request->file('gallery_images') as $image) {
+                    $property->addMedia($image)
+                        ->toMediaCollection('gallery');
+                }
+            }
 
 
         return redirect()->route('admin.properties.show', $property)->with('success', 'Property updated!');
@@ -113,37 +147,43 @@ public function create()
         return redirect()->route('admin.properties.index')->with('success', 'Property deleted.');
     }
 
-    private function uploadMedia(Property $property, Request $request, string $requestField, string $collectionName = null)
-    {
-        // If no collection name is provided, use the request field name
-        if (is_null($collectionName)) {
-            $collectionName = $requestField;
+     /**
+     * Remove a single gallery image
+     */
+
+
+    public function removeGalleryImage(Property $property, $mediaId)
+{
+    try {
+        $media = $property->getMedia('gallery')->where('id', $mediaId)->first();
+
+        if ($media) {
+            $media->delete();
+            return redirect()->back()->with('success', 'Image deleted successfully.');
         }
 
-        if ($request->hasFile($requestField)) {
-
-            // If it's a "singleFile" collection, the package handles deleting the old one.
-            // If it's a multi-file collection, we clear it first to replace images.
-            if ($collectionName === 'photos') {
-                $property->clearMediaCollection('photos');
-            }
-
-            // The 'addMediaFromRequest' handles single files
-            if ($requestField === 'featured_image') {
-                $property->addMediaFromRequest($requestField)
-                    ->usingName(Str::slug($property->name) . '-' . Str::random(4)) // Custom file name
-                    ->toMediaCollection($collectionName);
-            }
-
-            // Handle array of files for 'photos'
-            if ($requestField === 'photos') {
-                foreach ($request->file($requestField) as $file) {
-                    $property->addMedia($file)
-                        ->usingName(Str::slug($property->name) . '-' . Str::random(4)) // Custom file name
-                        ->toMediaCollection($collectionName);
-                }
-            }
-        }
+        return redirect()->back()->with('error', 'An Error Occured.');
+        
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Error deleting image: ' . $e->getMessage());
     }
+}
+
+public function addGalleryImage(Request $request, Property $property)
+{
+    $request->validate([
+        'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+    ]);
+
+    try {
+        // Attach new image to the gallery collection
+        $property->addMediaFromRequest('image')->toMediaCollection('gallery');
+
+        return redirect()->back()->with('success', 'Image added successfully.');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Failed to upload image: ' . $e->getMessage());
+    }
+}
+
     
 }

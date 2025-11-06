@@ -1,8 +1,6 @@
-<x-app-layout>
+<x-slide-form button-text="Edit Property" title="Edit Property">
 
-    <x-page-title title="Edit Property: {{ $property->name }}" />
-
-    <form method="POST" action="{{ route('admin.properties.update', $property) }}" enctype="multipart/form-data">
+       <form method="POST" action="{{ route('admin.properties.update', $property) }}" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
@@ -137,82 +135,7 @@
                     @enderror
                 </div>
 
-                <!-- Gallery Images Upload Section -->
-                <div class="mb-8">
-                    <label class="block text-sm font-medium text-gray-700 mb-3">
-                        Gallery Images
-                        <span class="text-gray-500 font-normal">(Upload multiple images)</span>
-                    </label>
-
-                    <!-- Current Gallery Images Display -->
-                    @if($property->gallery_images && count($property->gallery_images) > 0)
-                    <div id="current-gallery-images" class="mb-4">
-                        <div class="bg-gray-50 rounded-lg p-4 border-2 border-gray-200">
-                            <div class="flex items-center justify-between mb-3">
-                                <h4 class="text-sm font-semibold text-gray-700">Current Gallery (<span id="current-gallery-count">{{ count($property->gallery_images) }}</span> images):</h4>
-                            </div>
-                            <div id="current-gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                @foreach($property->gallery_images as $index => $image)
-                                <div class="relative group" data-image-id="{{ $index }}">
-                                    <div class="relative">
-                                        <img src="{{ asset('storage/' . $image) }}" 
-                                             alt="Gallery image {{ $index + 1 }}"
-                                             class="w-full h-32 object-cover rounded-lg shadow-md border-2 border-gray-300 transition-transform duration-200 group-hover:scale-105">
-                                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-200 rounded-lg flex items-center justify-center">
-                                            <button type="button" 
-                                                    onclick="removeCurrentGalleryImage({{ $index }})"
-                                                    class="opacity-0 group-hover:opacity-100 bg-red-600 text-white p-2 rounded-full hover:bg-red-700 transition-all duration-200">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    <input type="hidden" name="remove_gallery_images" id="remove_gallery_images" value="">
-                    @endif
-
-                    <!-- Upload Button -->
-                    <div class="mb-4">
-                        <label for="gallery_images"
-                            class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg cursor-pointer hover:bg-green-700 transition">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
-                                </path>
-                            </svg>
-                            Add More Gallery Images
-                        </label>
-                        <input type="file" name="gallery_images[]" id="gallery_images" accept="image/*" multiple
-                            class="hidden" onchange="previewGalleryImages(event)">
-                        <span class="ml-3 text-sm text-gray-500" id="gallery-file-count">No files chosen</span>
-                    </div>
-
-                    <!-- New Gallery Preview Container -->
-                    <div id="gallery-preview-container" class="hidden">
-                        <div class="bg-gray-50 rounded-lg p-4 border-2 border-green-300">
-                            <div class="flex items-center justify-between mb-3">
-                                <h4 class="text-sm font-semibold text-green-700">New Images Preview (<span
-                                        id="gallery-count">0</span> images):</h4>
-                                <button type="button" onclick="clearAllGalleryPreviews()"
-                                    class="text-red-600 hover:text-red-800 text-sm font-medium">
-                                    Clear All
-                                </button>
-                            </div>
-                            <div id="gallery-preview" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <!-- Preview images will be inserted here -->
-                            </div>
-                        </div>
-                    </div>
-
-                    @error('gallery_images.*')
-                    <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
+             
 
             </div>
 
@@ -270,6 +193,8 @@
         </div>
 
     </form>
+
+</x-slide-form>
 
     @push('scripts')
     <script>
@@ -494,5 +419,3 @@
         }
     </script>
     @endpush
-
-</x-app-layout>

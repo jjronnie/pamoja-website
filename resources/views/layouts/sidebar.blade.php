@@ -48,20 +48,15 @@
 
                     <i data-lucide="house" class="w-4 h-4 text-white"></i>
                     <span>Properties</span>
-                </a>
-
-
-
-
-              
+                </a>              
 
 
                 {{-- Users --}}
-                {{-- <a href="{{ route('users.index') }}"
-                    class="sidebar-link {{ request()->routeIs('users.*') ? 'sidebar-link-active' : '' }}">
-                    <i data-lucide="users" class="w-4 h-4 text-white"></i>
-                    <span>Admin</span>
-                </a> --}}
+                <a href="{{ route('admin.users.index') }}"
+                    class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'sidebar-link-active' : '' }}">
+                    <i data-lucide="shield" class="w-4 h-4 text-white"></i>
+                    <span>Admins</span>
+                </a>
 
 
                 {{-- Settings --}}
