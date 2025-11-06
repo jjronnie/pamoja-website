@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Category;
+use App\Models\Property;
 
-use App\Models\Member;
-use App\Models\SavingsAccount;
 use App\Mail\TemporaryPasswordMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,13 +12,23 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
 {
+
+       public function dashboard()
+{
+    $totalUsers = User::count();
+    $totalCategories = Category::count();
+    $totalProperties = Property::count();
+
+    return view('dashboard', compact('totalUsers', 'totalCategories', 'totalProperties'));
+}
+
+
     /**
      * Display a listing of the resource.
      */

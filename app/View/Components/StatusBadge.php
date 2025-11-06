@@ -28,7 +28,7 @@ class StatusBadge extends Component
             'pending' => 'bg-yellow-100 text-yellow-700',
             'expired' => 'bg-orange-100 text-orange-700',
             'on-leave' => 'bg-yellow-100 text-yellow-800',
-            'suspended' => 'bg-orange-100 text-orange-800',
+            'suspended' => 'bg-red-100 text-red-800',
             'terminated' => 'bg-red-100 text-red-800',
             'dismissed' => 'bg-red-200 text-red-900',
             'resigned' => 'bg-gray-100 text-gray-800',

@@ -10,13 +10,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware(['auth', 'verified'])->group(function () {
 
 
+Route::middleware(['auth', 'verified', 'pwc'])->group(function () {
+
+    Route::get('/pamoja/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('properties', PropertyController::class);
         Route::delete('properties/{property}/gallery/{media}', [PropertyController::class, 'removeGalleryImage'])
@@ -28,6 +26,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('users', UserController::class);
 
     });
+
+
+});
+
+Route::middleware(['auth', 'verified',])->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

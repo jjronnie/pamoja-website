@@ -22,15 +22,24 @@
 
     @else
 
-    <x-table :headers="['#', 'property','Slug', 'Properties', 'Created At' ]" showActions="false">
+    <x-table :headers="['#', 'property','ownership', 'Size', 'Created by' ]" showActions="false">
         @foreach ($properties as $index => $property)
 
         <x-table.row>
             <x-table.cell>{{ $index +1 }}</x-table.cell>
             <x-table.cell>{{ $property->name ?? '' }}</x-table.cell>
-            <x-table.cell>{{ $property->slug ?? '' }}</x-table.cell>
-            <x-table.cell>-</x-table.cell>
-            <x-table.cell>{{ $property->created_at ?? '' }}</x-table.cell>
+            <x-table.cell>{{ $property->ownership ?? '' }}</x-table.cell>
+            <x-table.cell>{{ $property->size ?? '' }}</x-table.cell>
+
+                  <x-table.cell>
+                <div class="flex items-center">
+                    <div class="">
+                        <div class="text-sm font-medium text-gray-900"> {{ $property->creator->name ?? 'n/a' }}</div>
+                        <div class="text-sm text-gray-500"> {{ $property->created_at ?? '' }}</div>
+                    </div>
+                </div>
+            </x-table.cell>
+
             <x-table.cell>
                 <div class="flex items-center space-x-2">
                   <a class="btn" href="{{ route('admin.properties.show', $property->id) }}">

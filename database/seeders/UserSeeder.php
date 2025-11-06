@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
                 'role' => 'superadmin',
                 'status' => 'active',
-                'must_change_password' => true,
+                'must_change_password' => false,
             ]
         );
     }
