@@ -110,8 +110,8 @@ function handleGesture() {
             showSlide(currentSlide);
         }
         
-        // Auto slide every 5 seconds
-        setInterval(nextSlide, 5000);
+        // Auto slide every 8 seconds
+        setInterval(nextSlide, 8000);
         
         // Manual slide control
         indicators.forEach((indicator, index) => {
@@ -233,27 +233,7 @@ function handleGesture() {
 
         observer.observe(mobileMenu, { attributes: true });
 
-        // Add loading animation to forms
-        // const forms = document.querySelectorAll('form');
-        // forms.forEach(form => {
-        //     form.addEventListener('submit', (e) => {
-        //         e.preventDefault();
-        //         const submitBtn = form.querySelector('button[type="submit"]');
-        //         const originalText = submitBtn.textContent;
-        //         submitBtn.textContent = 'Sending...';
-        //         submitBtn.disabled = true;
-                
-        //         // Simulate form submission
-        //         setTimeout(() => {
-        //             submitBtn.textContent = 'Message Sent!';
-        //             setTimeout(() => {
-        //                 submitBtn.textContent = originalText;
-        //                 submitBtn.disabled = false;
-        //                 form.reset();
-        //             }, 2000);
-        //         }, 1500);
-        //     });
-        // });
+      
 
         // Add entrance animations on scroll
         const animateOnScroll = () => {

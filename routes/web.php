@@ -7,10 +7,9 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
 
+
+    Route::get('/', [FrontendController::class, 'index'])->name('home');
     Route::get('/about-pamoja', [FrontendController::class, 'about'])->name('about');
     Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
     Route::get('/services', [FrontendController::class, 'services'])->name('services');

@@ -149,10 +149,10 @@
             </div>
 
             <div class="text-center mt-8 md:mt-12">
-                <button
+                <a href="{{ route('properties') }}"
                     class="bg-red-900 text-white px-6 md:px-8 py-3 rounded-lg hover:bg-red-800 transition font-semibold">
                     View All Properties
-                </button>
+            </a>
             </div>
         </div>
     </section>

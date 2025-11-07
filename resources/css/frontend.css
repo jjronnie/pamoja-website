@@ -1,17 +1,13 @@
 
         * {
             font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
         }
 
         .service-card:hover * {
             color: white ;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
+     
 
 
         .banner-slide {
@@ -29,9 +25,9 @@
             position: absolute;
         }
 
-        .gradient-overlay {
+        /* .gradient-overlay {
             background: linear-gradient(135deg, rgba(131, 16, 16, 0.92) 0%, rgba(0, 0, 0, 0.75) 100%);
-        }
+        } */
 
         .service-card {
             transition: all 0.3s ease;

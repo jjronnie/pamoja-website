@@ -1,6 +1,6 @@
 <section id="home" class="relative h-screen mt-16 overflow-hidden">
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/img/scale1.webp');"></div>
-    <div class="absolute inset-0 gradient-overlay"></div>
+    <div class="absolute inset-0 bg-cover brightness-50 bg-center" style="background-image: url('assets/img/scale1.webp');"></div>
+    {{-- <div class="absolute inset-0 gradient-overlay"></div> --}}
 
     <div class="relative h-full flex flex-col items-center justify-center px-4 md:px-8">
         <div class="container mx-auto">
@@ -70,23 +70,14 @@
         <!-- Search Form - Centered and Responsive -->
         <div class="w-full max-w-6xl mx-auto mt-8 md:mt-12 px-4">
             <div class="bg-white rounded-xl shadow-2xl p-4 md:p-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                     <select
                         class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-900 w-full">
-                        <option>Service Type</option>
-                        <option>Debt Collection</option>
-                        <option>Court Bailiffs</option>
-                        <option>Property Sales</option>
-                        <option>Legal Consultants</option>
+                        <option>Type</option>
+                        
                         <option>Auctioneering</option>
                     </select>
-                    <select
-                        class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-900 w-full">
-                        <option>Location</option>
-                        <option>Kampala</option>
-                        <option>Entebbe</option>
-                        <option>Jinja</option>
-                    </select>
+                   
                     <select
                         class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-900 w-full">
                         <option>Category</option>
@@ -96,7 +87,7 @@
                     </select>
                     <button
                         class="bg-red-900 text-white px-6 py-3 rounded-lg hover:bg-red-800 transition font-semibold w-full">
-                        Search Now
+                        Find Properties
                     </button>
                 </div>
             </div>
@@ -104,7 +95,7 @@
     </div>
 
     <!-- Slide Indicators -->
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-3">
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
         <button class="slide-indicator w-3 h-3 rounded-full bg-white opacity-100 hover:opacity-100 transition"
             data-slide="0"></button>
         <button class="slide-indicator w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition"
