@@ -2,6 +2,19 @@
 <x-page-title title="Settings" />
 <x-page-title />
 
+<x-breadcrumb :items="[
+    ['label' => 'Home', 'url' => route('home')],
+    ['label' => 'Properties', 'url' => route('properties.index')],
+    ['label' => $property->title]
+]" />
+
+
+<x-breadcrumb :items="[
+    ['label' => 'Home', 'url' => route('home')],
+    ['label' => 'About Us'],
+]" />
+
+
 
 <x-logo /> <!-- default size -->
 

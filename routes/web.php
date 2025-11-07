@@ -14,6 +14,8 @@ Route::get('/', function () {
     Route::get('/about-pamoja', [FrontendController::class, 'about'])->name('about');
     Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
     Route::get('/services', [FrontendController::class, 'services'])->name('services');
+    Route::get('/property', [FrontendController::class, 'single'])->name('single');
+    Route::get('/properties', [FrontendController::class, 'properties'])->name('properties');
 
 
 

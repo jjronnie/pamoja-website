@@ -14,7 +14,8 @@
                 <a href="{{ route('home') }}" class="text-gray-900 hover:text-red-900 transition">Home</a>
                 <a href="{{ route('about') }}" class="text-gray-900 hover:text-red-900 transition">About</a>
                 <a href="{{ route('services') }}" class="text-gray-900 hover:text-red-900 transition">Services</a>
-                <a href="#properties" class="text-gray-900 hover:text-red-900 transition">Properties</a>
+                <a href="/properties" class="text-gray-900 hover:text-red-900 transition ">Properties</a>
+                <a href="/property" class="text-gray-900 hover:text-red-900 transition ">Property Details</a>
                 <a href="{{ route('contact') }}" class="text-gray-900 hover:text-red-900 transition">Contact</a>
             </div>
 
@@ -41,7 +42,8 @@
                 <a href="{{ route('home') }}" class="text-gray-900 hover:text-red-900 transition py-2">Home</a>
                 <a href="{{ route('about') }}" class="text-gray-900 hover:text-red-900 transition py-2">About</a>
                 <a href="{{ route('services') }}" class="text-gray-900 hover:text-red-900 transition py-2">Services</a>
-                <a href="#properties" class="text-gray-900 hover:text-red-900 transition py-2">Properties</a>
+                <a href="/properties" class="text-gray-900 hover:text-red-900 transition py-2">Properties</a>
+                <a href="/property" class="text-gray-900 hover:text-red-900 transition py-2">Property Details</a>
                 <a href="{{ route('contact') }}" class="text-gray-900 hover:text-red-900 transition py-2">Contact</a>
 
                 <button class="btn">

@@ -1,5 +1,9 @@
 @layer components {
 
+  section {
+    @apply lg:px-10;
+  }
+
 
   .details-section {
     @apply flex items-start space-x-6 pb-6 border-b border-gray-200;
@@ -45,5 +49,3 @@
     @apply text-center text-gray-400 py-12;
   }
 }
-
-

@@ -4,7 +4,7 @@
             <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div class="order-2 md:order-1">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                        <img src="{{ asset('assets/img/scale.webp') }}"
                             alt="About" class="rounded-2xl shadow-2xl w-full">
                         <div class="absolute -bottom-6 -right-6 bg-white p-4 md:p-6 rounded-xl shadow-xl">
                             <div class="flex items-center space-x-3 md:space-x-4">
