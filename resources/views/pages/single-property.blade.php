@@ -2,10 +2,11 @@
 
     <x-breadcrumb :items="[
     ['label' => 'Home', 'url' => route('home')],
-    ['label' => 'Property Title'],
+    ['label' => 'Properties', 'url' => route('properties')],
+    ['label' => $property->name]
 ]" />
 
-  <section class="py-8 md:py-12">
+    <section class="py-8 md:py-12">
         <div class="container mx-auto px-6 lg:px-12">
             <div class="grid lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2">
@@ -18,7 +19,7 @@
                                     <span
                                         class="bg-green-100 text-green-800 px-4 py-1 rounded-lg text-sm font-semibold">Featured</span>
                                 </div>
-                                <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-2">Luxury Villa in Kololo
+                                <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-2">{{ $property->name }}
                                 </h1>
                                 <div class="flex items-center text-gray-600 space-x-2">
                                     <i class="fas fa-map-marker-alt text-red-900"></i>
@@ -26,10 +27,21 @@
                                         Uganda</span>
                                 </div>
                             </div>
-                            <div class="text-right">
-                                <p class="text-sm text-gray-600 mb-1">Price</p>
-                                <p class="text-3xl md:text-4xl font-bold text-red-900">UGX 850M</p>
-                                <p class="text-sm text-gray-600">≈ $227,000 USD</p>
+
+                        </div>
+
+                        <div class="mb-6">
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                                @if($property->hasFeaturedImage())
+                                <img src="{{ $property->getFeaturedImageUrl('preview') }}" loading="lazy"
+                                    alt="{{ $property->name }} Featured"
+                                    class="w-full h-64 md:h-96 lg:h-[500px] object-cover">
+
+                                @else
+                                <x-empty-state message="No Image." />
+                                @endif
+
+
                             </div>
                         </div>
 
@@ -57,70 +69,17 @@
                         </div>
                     </div>
 
-                    <div class="mb-6">
-                        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                            <img id="main-image"
-                                src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-                                alt="Property Main" class="w-full h-64 md:h-96 lg:h-[500px] object-cover">
-                           
-                           
-                        </div>
-                    </div>
 
-                    <div class="mb-8">
-                        <div class="grid grid-cols-4 md:grid-cols-6 gap-2 md:gap-3">
-                            <div class="thumbnail active rounded-lg overflow-hidden cursor-pointer"
-                                onclick="changeImage(0)">
-                                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                                    alt="Thumbnail 1" class="w-full h-16 md:h-20 object-cover">
-                            </div>
-                            <div class="thumbnail rounded-lg overflow-hidden cursor-pointer" onclick="changeImage(1)">
-                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                                    alt="Thumbnail 2" class="w-full h-16 md:h-20 object-cover">
-                            </div>
-                            <div class="thumbnail rounded-lg overflow-hidden cursor-pointer" onclick="changeImage(2)">
-                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                                    alt="Thumbnail 3" class="w-full h-16 md:h-20 object-cover">
-                            </div>
-                            <div class="thumbnail rounded-lg overflow-hidden cursor-pointer" onclick="changeImage(3)">
-                                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                                    alt="Thumbnail 4" class="w-full h-16 md:h-20 object-cover">
-                            </div>
-                            <div class="thumbnail rounded-lg overflow-hidden cursor-pointer" onclick="changeImage(4)">
-                                <img src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                                    alt="Thumbnail 5" class="w-full h-16 md:h-20 object-cover">
-                            </div>
-                            <div class="thumbnail rounded-lg overflow-hidden cursor-pointer" onclick="changeImage(5)">
-                                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                                    alt="Thumbnail 6" class="w-full h-16 md:h-20 object-cover">
-                            </div>
-                         
-                        </div>
-                    </div>
+
+
+
 
                     <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
                         <h2 class="text-2xl font-bold text-gray-900 mb-4">Property Description</h2>
                         <div class="prose max-w-none text-gray-600 space-y-4">
-                            <p>Welcome to this magnificent luxury villa nestled in the heart of Kololo, one of Kampala's
-                                most prestigious neighborhoods. This stunning property offers an exceptional blend of
-                                modern design, comfort, and sophisticated living.</p>
+                            <p>{{ $property->description }}</p>
 
-                            <p>The villa boasts 4 spacious bedrooms, each with en-suite facilities, providing ultimate
-                                privacy and comfort for family members and guests. The master bedroom features a large
-                                walk-in closet and a luxurious bathroom with both a bathtub and separate shower.</p>
 
-                            <p>The open-plan living and dining area creates a perfect space for entertaining, with
-                                floor-to-ceiling windows that flood the space with natural light and offer beautiful
-                                views of the landscaped garden. The modern kitchen is equipped with high-end appliances,
-                                granite countertops, and ample storage space.</p>
-
-                            <p>Outside, the property features a beautifully maintained garden, a covered patio perfect
-                                for outdoor dining, and a secure parking area for two vehicles. The compound is fully
-                                walled with electric fencing and 24/7 security, ensuring complete peace of mind.</p>
-
-                            <p>This property is ideally located near international schools, shopping centers, hospitals,
-                                and major business districts, making it perfect for families and professionals alike.
-                            </p>
                         </div>
                     </div>
 
@@ -228,39 +187,44 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Location</h2>
-                        <div class="mb-6">
-                            <div class="flex items-start space-x-3 mb-4">
-                                <i class="fas fa-map-marker-alt text-red-900 text-xl mt-1"></i>
-                                <div>
-                                    <p class="font-semibold text-gray-900">Plot 45, Acacia Avenue</p>
-                                    <p class="text-gray-600">Kololo, Kampala, Uganda</p>
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-school text-gray-600"></i>
-                                    <span class="text-gray-600">International School of Uganda - 1.2 km</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-hospital text-gray-600"></i>
-                                    <span class="text-gray-600">Nakasero Hospital - 2.5 km</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <i class="fas fa-shopping-cart text-gray-600"></i>
-                                    <span class="text-gray-600">Acacia Mall - 0.8 km</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="map-container rounded-xl flex items-center justify-center text-gray-600">
-                            <div class="text-center">
-                                <i class="fas fa-map-marked-alt text-6xl mb-4 text-gray-400"></i>
-                                <p>Interactive Map</p>
-                                <p class="text-sm">(Integrate Google Maps or similar)</p>
-                            </div>
-                        </div>
+
+
+                    <h2 class="text-3xl font-bold mb-6">Image Gallery</h2>
+
+                    <!-- Gallery Grid -->
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
+
+                        @if($property->getMedia('gallery')->isNotEmpty())
+                        @foreach($property->getMedia('gallery') as $media)
+                        <img src="{{ $media->getUrl('large') }}" alt="{{ $property->name }} Image" loading="lazy"
+                            class="w-full h-full object-cover rounded-md cursor-pointer" onclick="openImage(this.src)">
+                        @endforeach
+                        @else
+                        <x-empty-state message="No Images." />
+                        @endif
+
                     </div>
+
+
+
+                    <!-- Full Screen Modal -->
+                    <div id="imgModal"
+                        class="fixed inset-0 bg-black bg-opacity-80 hidden z-[999] flex items-center justify-center"
+                        onclick="closeImage()">
+
+                        <img id="modalImg" class="max-w-[95%] max-h-[95%] rounded-lg shadow-lg" />
+
+                        <!-- Close button -->
+                        <button class="absolute top-5 right-5 text-white text-4xl font-bold"
+                            onclick="closeImage()">&times;</button>
+                    </div>
+
+
+
+
+
+
 
                     <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg">
                         <h2 class="text-2xl font-bold text-gray-900 mb-6">Similar Properties</h2>
@@ -302,18 +266,19 @@
                 <div class="lg:col-span-1">
                     <div class="sticky-sidebar space-y-6">
                         <div class="bg-white rounded-xl p-6 shadow-lg">
-                            <h3 class="text-xl font-bold text-gray-900 mb-4">Contact Agent</h3>
+                            <h3 class="text-xl font-bold text-center text-gray-900 mb-4">Interested in this Property?
+                                <br>Get In Touch
+                            </h3>
                             <div class="flex items-center space-x-4 mb-6">
                                 <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
-                                    <i class="fas fa-user text-red-900 text-2xl"></i>
+                                    <x-logo />
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-gray-900">Johnny Smith</h4>
-                                    <p class="text-sm text-gray-600">Senior Estate Agent</p>
-                                    <div class="flex items-center space-x-2 text-xs text-gray-500 mt-1">
-                                        <span><i class="fas fa-star text-yellow-400"></i> 4.9</span>
-                                        <span>(120 reviews)</span>
-                                    </div>
+                                    <h4 class="font-semibold text-gray-900">Pamoja Chambers</h4>
+                                    <p class="text-sm text-gray-600">
+                                        <a href="mailto:info@pamoja.com">Info@pamoja.com</a>
+                                    </p>
+
                                 </div>
                             </div>
 
@@ -323,39 +288,22 @@
                                     <i class="fas fa-phone"></i>
                                     <span>+256 123 456 789</span>
                                 </a>
-                                <a href="mailto:johnny.smith@pamojachambers.co.ug"
-                                    class="flex items-center justify-center space-x-2 bg-gray-100 text-gray-900 py-3 rounded-lg hover:bg-gray-200 transition">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="text-sm">Send Email</span>
-                                </a>
+
                                 <button
                                     class="flex items-center justify-center space-x-2 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition w-full">
                                     <i class="fab fa-whatsapp"></i>
                                     <span>WhatsApp</span>
                                 </button>
+
+                                <a href="mailto:johnny.smith@pamojachambers.co.ug"
+                                    class="flex items-center justify-center space-x-2 bg-gray-100 text-gray-900 py-3 rounded-lg hover:bg-gray-200 transition">
+                                    <i class="fas fa-envelope"></i>
+                                    <span class="text-sm">Send Email</span>
+                                </a>
+
                             </div>
 
-                            <form class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
-                                    <input type="text" placeholder="John Doe"
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-900">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Your Email</label>
-                                    <input type="email" placeholder="john@example.com"
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-900">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Your Message</label>
-                                    <textarea rows="4" placeholder="I'm interested in this property..."
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-900"></textarea>
-                                </div>
-                                <button type="submit"
-                                    class="w-full bg-red-900 text-white py-3 rounded-lg hover:bg-red-800 transition font-semibold">
-                                    Send Message
-                                </button>
-                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -363,67 +311,18 @@
         </div>
     </section>
 
-       <script>
-   
 
-        // --- Image Gallery ---
-        const images = [
-            'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-            'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-            'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-            'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-            'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-         
-        ];
 
-        let currentImageIndex = 0;
-        const mainImage = document.getElementById('main-image');
-        const imageCounter = document.getElementById('image-counter');
-        const thumbnails = document.querySelectorAll('.thumbnail');
+    <script>
+        function openImage(src) {
+      document.getElementById('modalImg').src = src;
+      document.getElementById('imgModal').classList.remove('hidden');
+    }
+    function closeImage() {
+      document.getElementById('imgModal').classList.add('hidden');
+    }
 
-        function updateGallery(index) {
-            // Update main image
-            mainImage.src = images[index];
-
-            // Update counter
-            imageCounter.textContent = `${index + 1} / ${images.length}`;
-
-            // Update active thumbnail
-            thumbnails.forEach((thumb, i) => {
-                if (i === index) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
-                }
-            });
-
-            // Update current index
-            currentImageIndex = index;
-        }
-
-        function changeImage(index) {
-            updateGallery(index);
-        }
-
-        function nextImage() {
-            let nextIndex = currentImageIndex + 1;
-            if (nextIndex >= images.length) {
-                nextIndex = 0; // Loop back to start
-            }
-            updateGallery(nextIndex);
-        }
-
-        function previousImage() {
-            let prevIndex = currentImageIndex - 1;
-            if (prevIndex < 0) {
-                prevIndex = images.length - 1; // Loop to end
-            }
-            updateGallery(prevIndex);
-        }
-
-        // Initialize gallery
-        updateGallery(0);
+      
 
     </script>
 

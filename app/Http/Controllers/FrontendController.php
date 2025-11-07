@@ -22,10 +22,6 @@ class FrontendController extends Controller
         return view('pages.contact');
     }
 
-    public function single()
-    {
-        return view('pages.single-property');
-    }
 
 
  public function properties()
@@ -36,6 +32,16 @@ class FrontendController extends Controller
         ->paginate(50);
 
     return view('pages.properties', compact('properties'));
+}
+
+public function single($slug)
+{
+    $property = Property::with(['categories', 'media'])
+        ->where('slug', $slug)
+        ->where('is_published', true)
+        ->firstOrFail();
+
+    return view('pages.single-property', compact('property'));
 }
 
 
