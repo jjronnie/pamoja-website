@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('/services', [FrontendController::class, 'services'])->name('services');
     Route::get('/properties', [FrontendController::class, 'properties'])->name('properties');
     Route::get('/properties/{slug}', [FrontendController::class, 'single'])->name('properties.show');
+  
+Route::post('/contact/send', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
+
 
 
 
@@ -29,6 +32,10 @@ Route::middleware(['auth', 'verified', 'pwc'])->group(function () {
             ->name('properties.gallery.remove');
         Route::post('properties/{property}/gallery', [PropertyController::class, 'addGalleryImage'])
             ->name('properties.gallery.add');
+
+            Route::get('properties/{property}/featured', [PropertyController::class, 'toggleFeatured'])
+    ->name('properties.toggleFeatured');
+
 
         Route::resource('categories', CategoryController::class);
         Route::resource('users', UserController::class);

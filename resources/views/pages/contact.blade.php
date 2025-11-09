@@ -1,9 +1,11 @@
 <x-guest-layout>
 
+
+
     <x-breadcrumb :items="[
-    ['label' => 'Home', 'url' => route('home')],
-    ['label' => 'Contact'],
-]" />
+        ['label' => 'Home', 'url' => route('home')],
+        ['label' => 'Connect with Us'],
+    ]" description="We're here to help. Contact us by email, phone, or using the form below.." />
 
     <!-- Contact Section -->
     <section id="contact" class="py-16 md:py-20">
@@ -24,7 +26,8 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-900 mb-1">Office Location</h4>
-                                <p class="text-gray-600 text-sm md:text-base">Plot 123, Kampala Road, Kampala, Uganda
+                                <p class="text-gray-600 text-sm md:text-base">Old Kampala, Martin Road, Solomon's Plaza,
+                                    1st Floor, Suite #E 09, Opp Quality Supermarket, Kampala Uganda.
                                 </p>
                             </div>
                         </div>
@@ -34,10 +37,22 @@
                                 <i class="fas fa-phone text-red-900 text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Phone Number</h4>
-                                <p class="text-gray-600 text-sm md:text-base">+256 123 456 789</p>
-                                <p class="text-gray-600 text-sm md:text-base">+256 987 654 321</p>
+                                <h4 class="font-semibold text-gray-900 mb-1">Call Us On</h4>
+
+                                <a href="tel:+256393243211"
+                                    class="text-gray-600 text-sm md:text-base hover:text-red-900 transition block">
+                                    +256 393 243 211
+                                </a>
+                                <a href="tel:+256700141212"
+                                    class="text-gray-600 text-sm md:text-base hover:text-red-900 transition block">
+                                    +256 700 141 212
+                                </a>
+                                <a href="tel:+256776141212"
+                                    class="text-gray-600 text-sm md:text-base hover:text-red-900 transition block">
+                                    +256 776 141 212
+                                </a>
                             </div>
+
                         </div>
 
                         <div class="flex items-start space-x-4">
@@ -46,24 +61,20 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-900 mb-1">Email Address</h4>
-                                <p class="text-gray-600 text-sm md:text-base">info@pamojachambers.co.ug</p>
-                                <p class="text-gray-600 text-sm md:text-base">legal@pamojachambers.co.ug</p>
+                                <p class="text-gray-600 text-sm md:text-base">pamojachambers@gmail.com</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-clock text-red-900 text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Working Hours</h4>
-                                <p class="text-gray-600 text-sm md:text-base">Monday - Friday: 8:00 AM - 6:00 PM</p>
-                                <p class="text-gray-600 text-sm md:text-base">Saturday: 9:00 AM - 2:00 PM</p>
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="mt-6 md:mt-8 flex space-x-4">
+
+                        <a href="https://wa.me/256776141212" target="_blank"
+                            class="w-12 h-12 bg-red-900 text-white rounded-lg flex items-center justify-center hover:bg-red-800 transition">
+                            <i class="fab fa-whatsapp "></i>
+                        </a>
+
                         <a href="#"
                             class="w-12 h-12 bg-red-900 text-white rounded-lg flex items-center justify-center hover:bg-red-800 transition">
                             <i class="fab fa-facebook-f"></i>
@@ -80,69 +91,19 @@
                             class="w-12 h-12 bg-red-900 text-white rounded-lg flex items-center justify-center hover:bg-red-800 transition">
                             <i class="fab fa-instagram"></i>
                         </a>
+
+
+
                     </div>
                 </div>
 
                 <!-- Contact Form -->
-                <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8">
-                    <form>
-                        <div class="grid md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2 text-sm md:text-base">Full
-                                    Name</label>
-                                <input type="text"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-900 text-sm md:text-base"
-                                    placeholder="John Doe">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2 text-sm md:text-base">Email
-                                    Address</label>
-                                <input type="email"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-900 text-sm md:text-base"
-                                    placeholder="john@example.com">
-                            </div>
-                        </div>
+               @include('layouts.frontend.contact-form')
 
-                        <div class="grid md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2 text-sm md:text-base">Phone
-                                    Number</label>
-                                <input type="tel"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-900 text-sm md:text-base"
-                                    placeholder="+256 123 456 789">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2 text-sm md:text-base">Service
-                                    Needed</label>
-                                <select
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-900 text-sm md:text-base">
-                                    <option>Select Service</option>
-                                    <option>Debt Collection</option>
-                                    <option>Court Bailiffs</option>
-                                    <option>Property Sales</option>
-                                    <option>Legal Consultants</option>
-                                    <option>Commission Agents</option>
-                                    <option>Auctioneering</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="mb-4 md:mb-6">
-                            <label class="block text-gray-700 font-semibold mb-2 text-sm md:text-base">Message</label>
-                            <textarea rows="5"
-                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-900 text-sm md:text-base"
-                                placeholder="Tell us about your case..."></textarea>
-                        </div>
-
-                        <button type="submit"
-                            class="w-full bg-red-900 text-white py-3 md:py-4 rounded-lg hover:bg-red-800 transition font-semibold text-base md:text-lg">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
             </div>
         </div>
     </section>
 
 
-    </x-guest-layout>
+</x-guest-layout>

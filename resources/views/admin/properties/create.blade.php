@@ -10,7 +10,7 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label for="name" class="label"> Name <span class="text-red-600"> *</span></label>
+                                <label for="name" class="label"> Name/Title <span class="text-red-600"> *</span></label>
                                 <input type="text" name="name" id="name" value="{{ old('name') }}" required
                                     class="input @error('name') border-red-500 @enderror" />
                                 @error('name')
@@ -18,34 +18,85 @@
                                 @enderror
                             </div>
 
+                            <!-- Short Description -->
                             <div>
-                                <label for="size" class="label">Size (e.g., 1200 sqft)</label>
-                                <input type="text" name="size" id="size" value="{{ old('size') }}"
-                                    class="input @error('size') border-red-500 @enderror" />
-                                @error('size')
+                                <label for="short_description" class="label">Short Description</label>
+                                <input type="text" name="short_description" id="short_description"
+                                    value="{{ old('short_description') }}"
+                                    class="input @error('short_description') border-red-500 @enderror" />
+                                @error('short_description')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
 
+                            <!-- Status -->
                             <div>
-                                <label for="ownership" class="label">Ownership</label>
-                                <input type="text" name="ownership" id="ownership" value="{{ old('ownership') }}"
-                                    class="input @error('ownership') border-red-500 @enderror" />
-                                @error('ownership')
+                                <label for="status" class="label">Status e.g on sale,sold</label>
+                                <input type="text" name="status" id="status" value="{{ old('status') }}"
+                                    class="input @error('status') border-red-500 @enderror" />
+                                @error('status')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>                        
+
+
+                         
+
+                               </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                   <!-- location -->
+                            <div>
+                                <label for="location" class="label">Location</label>
+                                <input type="text" name="location" id="location" value="{{ old('location') }}"
+                                    class="input @error('location') border-red-500 @enderror" />
+                                @error('location')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
+
+                            <!-- Directions -->
+                            <div>
+                                <label for="directions" class="label">Directions</label>
+                                <textarea name="directions" id="directions"
+                                    class="input @error('directions') border-red-500 @enderror">{{ old('directions') }}</textarea>
+                                @error('directions')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+
+                            <!-- Latitude -->
+                            <div>
+                                <label for="latitude" class="label">Latitude</label>
+                                <input type="text" name="latitude" id="latitude" value="{{ old('latitude') }}"
+                                    class="input @error('latitude') border-red-500 @enderror" />
+                                @error('latitude')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Longitude -->
+                            <div>
+                                <label for="longitude" class="label">Longitude</label>
+                                <input type="text" name="longitude" id="longitude" value="{{ old('longitude') }}"
+                                    class="input @error('longitude') border-red-500 @enderror" />
+                                @error('longitude')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>                      
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1  gap-4">
                             <div>
-                                <label for="description" class="label">Description</label>
+                                <label for="description" class="label">Full Description</label>
                                 <textarea name="description" id="description" rows="5"
                                     class="input @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
                                 @error('description')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div>                         
                         </div>
                     </div>
                 </div>
@@ -60,7 +111,7 @@
                     <!-- Upload Button -->
                     <div class="mb-4">
                         <label for="featured_image"
-                            class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition">
+                            class="btn">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -187,6 +238,29 @@
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
+                  <div class="bg-white rounded-lg shadow-md p-6">
+
+                           <!-- Features (Dynamic Key-Value Pairs) -->
+                            <div x-data="{ features: @json(old('features', [])) }">
+                                <label class="label">Features & Custom Fields</label>
+                                <template x-for="(value, key) in features" :key="key">
+                                    <div class="flex space-x-2 mb-2">
+                                        <input type="text" :name="'features[' + key + '][key]'" placeholder="Field Name"
+                                            x-model="features[key].key" class="input flex-1" />
+                                        <input type="text" :name="'features[' + key + '][value]'" placeholder="Value"
+                                            x-model="features[key].value" class="input flex-1" />
+                                        <button type="button" @click="features.splice(key, 1)"
+                                            class="btn">Remove</button>
+                                    </div>
+                                </template>
+                                <button type="button" @click="features.push({key: '', value: ''})" class="btn mt-2">Add
+                                    Feature</button>
+                                @error('features')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+                  </div>
             </div>
         </div>
 

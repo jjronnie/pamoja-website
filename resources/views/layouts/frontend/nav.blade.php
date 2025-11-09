@@ -9,23 +9,42 @@
                     <span class="text-xl md:text-2xl font-bold text-red-900">Pamoja Chambers</span></a>
             </div>
 
-            <!-- Desktop Menu -->
             <div class="hidden lg:flex items-center space-x-8">
-                <a href="{{ route('home') }}" class="text-gray-900 hover:text-red-900 transition">Home</a>
-                <a href="{{ route('about') }}" class="text-gray-900 hover:text-red-900 transition">About</a>
-                <a href="{{ route('services') }}" class="text-gray-900 hover:text-red-900 transition">Services</a>
-                <a href="/properties" class="text-gray-900 hover:text-red-900 transition ">Properties</a>
-                <a href="{{ route('contact') }}" class="text-gray-900 hover:text-red-900 transition">Contact</a>
+                <a href="{{ route('home') }}"
+                    class="nav-link {{ request()->routeIs('home') ? 'nav-link-active' : '' }}">
+                    Home
+                </a>
+
+                <a href="{{ route('about') }}"
+                    class="nav-link {{ request()->routeIs('about') ? 'nav-link-active' : '' }}">
+                    About
+                </a>
+
+                <a href="{{ route('services') }}"
+                    class="nav-link {{ request()->routeIs('services') ? 'nav-link-active' : '' }}">
+                    Services
+                </a>
+
+                <a href="/properties" class="nav-link {{ request()->is('properties*') ? 'nav-link-active' : '' }}">
+                    Properties
+                </a>
+
+                <a href="{{ route('contact') }}"
+                    class="nav-link {{ request()->routeIs('contact') ? 'nav-link-active' : '' }}">
+                    Contact
+                </a>
             </div>
 
+
+
             <div class="hidden lg:flex items-center space-x-4">
-                <a href="tel:+256123456789" class="flex items-center space-x-2 text-red-900">
+                <a href="tel:+256393243211" class="flex items-center space-x-2 text-red-900">
                     <i class="fas fa-phone"></i>
-                    <span class="text-sm">+256 123 456 789</span>
+                    <span class="text-sm">+256 393 243 211</span>
                 </a>
-                <button class="btn">
-                    Get Started
-                </button>
+                <a href="{{ route('properties') }}" class="btn">
+                    Explore Properties
+                </a>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -38,16 +57,35 @@
         <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4">
             <div class="flex flex-col space-y-3">
 
-                <a href="{{ route('home') }}" class="text-gray-900 hover:text-red-900 transition py-2">Home</a>
-                <a href="{{ route('about') }}" class="text-gray-900 hover:text-red-900 transition py-2">About</a>
-                <a href="{{ route('services') }}" class="text-gray-900 hover:text-red-900 transition py-2">Services</a>
-                <a href="/properties" class="text-gray-900 hover:text-red-900 transition py-2">Properties</a>
-                <a href="{{ route('contact') }}" class="text-gray-900 hover:text-red-900 transition py-2">Contact</a>
+                <a href="{{ route('home') }}"
+                    class="nav-link py-2 {{ request()->routeIs('home') ? 'nav-link-active' : '' }}">
+                    Home
+                </a>
 
-                <button class="btn">
-                    Get Started
-                </button>
+                <a href="{{ route('about') }}"
+                    class="nav-link py-2 {{ request()->routeIs('about') ? 'nav-link-active' : '' }}">
+                    About
+                </a>
+
+                <a href="{{ route('services') }}"
+                    class="nav-link py-2 {{ request()->routeIs('services') ? 'nav-link-active' : '' }}">
+                    Services
+                </a>
+
+                <a href="/properties" class="nav-link py-2 {{ request()->is('properties*') ? 'nav-link-active' : '' }}">
+                    Properties
+                </a>
+
+                <a href="{{ route('contact') }}"
+                    class="nav-link py-2 {{ request()->routeIs('contact') ? 'nav-link-active' : '' }}">
+                    Contact
+                </a>
+
+                <a href="{{ route('properties') }}" class="btn">
+                    Explore Properties
+                </a>
             </div>
         </div>
+
     </div>
 </nav>

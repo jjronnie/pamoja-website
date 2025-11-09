@@ -2,11 +2,14 @@
 <x-page-title title="Settings" />
 <x-page-title />
 
-<x-breadcrumb :items="[
-    ['label' => 'Home', 'url' => route('home')],
-    ['label' => 'Properties', 'url' => route('properties.index')],
-    ['label' => $property->title]
-]" />
+<x-breadcrumb 
+    :items="[
+        ['label' => 'Home', 'url' => route('home')],
+        ['label' => 'Our Services'],
+    ]" 
+    description="Explore our range of professional services."
+    background="{{ asset('/assets/img/services-bg.webp') }}"
+/>
 
 
 <x-breadcrumb :items="[
@@ -65,7 +68,7 @@ form
 confirmation Modal
 
 <x-confirm-modal :action="route('users.destroy', $user->id)"
-    warning="Are you sure you want to delete this user? This action cannot be undone." triggerText="Delete User" />
+    warning="Are you sure you want to delete this user? This action cannot be undone." method="" triggerText="Delete User" />
 
 <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
     <!-- card -->

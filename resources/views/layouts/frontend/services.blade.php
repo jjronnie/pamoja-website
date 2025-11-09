@@ -1,5 +1,5 @@
  <!-- Services Section -->
-    <section id="services" class="py-16 md:py-20 bg-gray-100">
+    <section id="services" class="py-14 md:py-14">
         <div class="container mx-auto px-6 lg:px-12">
             <div class="text-center mb-12 md:mb-16">
                 <p class="text-red-900 font-semibold mb-2">OUR SERVICES</p>
@@ -11,8 +11,8 @@
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
     <!-- Service Card -->
-    <div class="service-card bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
-        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-white rounded-lg flex items-center justify-center mb-4 md:mb-6">
+    <div class="service-card bg-gray-100 rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
+        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-gray-100 rounded-lg flex items-center justify-center mb-4 md:mb-6">
             <i class="fas fa-file-invoice-dollar text-red-900 text-2xl md:text-3xl"></i>
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3 group-hover:text-white">Debt Collection</h3>
@@ -24,8 +24,8 @@
     </div>
 
     <!-- Service Card -->
-    <div class="service-card bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
-        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-white rounded-lg flex items-center justify-center mb-4 md:mb-6">
+    <div class="service-card bg-gray-100 rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
+        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-gray-100 rounded-lg flex items-center justify-center mb-4 md:mb-6">
             <i class="fas fa-gavel text-red-900 text-2xl md:text-3xl"></i>
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Court Bailiffs</h3>
@@ -37,8 +37,8 @@
     </div>
 
     <!-- Service Card -->
-    <div class="service-card bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
-        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-white rounded-lg flex items-center justify-center mb-4 md:mb-6">
+    <div class="service-card bg-gray-100 rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
+        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-gray-100 rounded-lg flex items-center justify-center mb-4 md:mb-6">
             <i class="fas fa-home text-red-900 text-2xl md:text-3xl"></i>
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Property Sales</h3>
@@ -50,8 +50,8 @@
     </div>
 
     <!-- Service Card -->
-    <div class="service-card bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
-        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-white rounded-lg flex items-center justify-center mb-4 md:mb-6">
+    <div class="service-card bg-gray-100 rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
+        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-gray-100 rounded-lg flex items-center justify-center mb-4 md:mb-6">
             <i class="fas fa-balance-scale text-red-900 text-2xl md:text-3xl"></i>
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Legal Consultants</h3>
@@ -63,8 +63,8 @@
     </div>
 
     <!-- Service Card -->
-    <div class="service-card bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
-        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-white rounded-lg flex items-center justify-center mb-4 md:mb-6">
+    <div class="service-card bg-gray-100 rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
+        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-gray-100 rounded-lg flex items-center justify-center mb-4 md:mb-6">
             <i class="fas fa-handshake text-red-900 hover:text-white text-2xl md:text-3xl"></i>
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Commission Agents</h3>
@@ -76,8 +76,8 @@
     </div>
 
     <!-- Service Card -->
-    <div class="service-card bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
-        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-white rounded-lg flex items-center justify-center mb-4 md:mb-6">
+    <div class="service-card bg-gray-100 rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl hover:bg-red-900 transition-all duration-300">
+        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-100 hover:bg-gray-100 rounded-lg flex items-center justify-center mb-4 md:mb-6">
             <i class="fas fa-hammer text-red-900 text-2xl md:text-3xl"></i>
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Auctioneering</h3>

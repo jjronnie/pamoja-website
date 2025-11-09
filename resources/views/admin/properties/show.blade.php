@@ -3,15 +3,19 @@
     {{-- Title and Action Buttons --}}
     <div class="flex justify-between items-center mb-6">
         <x-page-title title="Property Details: {{ $property->name }}" />
-        <div class="space-x-2">
-            {{-- <a href="{{ route('admin.properties.edit', $property) }}" class="btn">
-                Edit Property <i data-lucide="pencil" class="w-4 h-4 ml-2"></i>
-            </a> --}}
-   @include('admin.properties.edit-form')
 
-     
-        </div>
-    </div>
+</div>
+ <div class="flex items-center space-x-2 mb-6">
+    <a href="{{ route('admin.properties.toggleFeatured', $property) }}"
+       class="btn {{ $property->is_featured ? 'btn' : 'btn-gray' }}">
+        {{ $property->is_featured ? 'Remove from Featured' : 'Add to Featured' }}
+        <i data-lucide="star" class="w-4 h-4 ml-2"></i>
+    </a>
+
+    @include('admin.properties.edit-form')
+</div>
+
+    
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
@@ -28,34 +32,35 @@
                 @endif
             </div>
 
-      {{-- Property Gallery Card --}}
-<div class="bg-white rounded-lg shadow-md p-6">
+            {{-- Property Gallery Card --}}
+            <div class="bg-white rounded-lg shadow-md p-6">
 
-   @include('admin.properties.add-photo')
+                @include('admin.properties.add-photo')
 
 
-    <h2 class="text-2xl font-bold text-gray-800 mt-4 mb-4">
-        Property Gallery 
-        <span class="text-sm">( {{ $property->getMedia('gallery')->count() }} images)</span>
-    </h2>
+                <h2 class="text-2xl font-bold text-gray-800 mt-4 mb-4">
+                    Property Gallery
+                    <span class="text-sm">( {{ $property->getMedia('gallery')->count() }} images)</span>
+                </h2>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        @foreach($property->getMedia('gallery') as $media)
-            <div class="relative overflow-hidden rounded-lg shadow-md aspect-square group">
-                <img src="{{ $media->getUrl('large') }}" alt="{{ $property->name }} Image" class="w-full h-full object-cover">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    @foreach($property->getMedia('gallery') as $media)
+                    <div class="relative overflow-hidden rounded-lg shadow-md aspect-square group">
+                        <img src="{{ $media->getUrl('large') }}" alt="{{ $property->name }} Image"
+                            class="w-full h-full object-cover">
 
-                {{-- Delete trigger on hover --}}
-                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
-                    <x-confirm-modal 
-                        :action="route('admin.properties.gallery.remove', ['property' => $property->id, 'media' => $media->id])"
-                        warning="Are you sure you want to delete this image? This action cannot be undone." 
-                        triggerIcon="trash" 
-                    />
+                        {{-- Delete trigger on hover --}}
+                        <div
+                            class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                            <x-confirm-modal
+                                :action="route('admin.properties.gallery.remove', ['property' => $property->id, 'media' => $media->id])"
+                                warning="Are you sure you want to delete this image? This action cannot be undone."
+                                triggerIcon="trash" />
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
-        @endforeach
-    </div>
-</div>
 
 
 

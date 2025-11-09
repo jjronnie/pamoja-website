@@ -19,18 +19,28 @@ class Property extends Model implements HasMedia
       // this will auto load realation with eager load
      protected $with = ['media'];
 
-    protected $fillable = [
-        'name',
-        'slug',
-        'size',
-        'ownership',
-        'description',
-        'is_published',
-        'created_by',
-    ];
+ protected $fillable = [
+    'name',
+    'slug',
+    'size',
+    'ownership',
+    'description',
+    'short_description',
+    'directions',
+    'features',
+    'status',
+    'location',
+    'latitude',
+    'longitude',
+    'is_published',
+    'is_featured',
+    'created_by',
+];
+
 
     protected $casts = [
         'is_published' => 'boolean',
+        'is_featured' => 'boolean',
     ];
 
     /**

@@ -15,12 +15,19 @@ return new class extends Migration {
             $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('size')->nullable(); 
-            $table->string('ownership')->nullable(); 
+            $table->string('short_description')->nullable();
             $table->text('description')->nullable();
+            $table->string('location')->nullable();
+            $table->decimal('latitude', 10, 7)->nullable();
+            $table->decimal('longitude', 10, 7)->nullable();
+            $table->text('directions')->nullable();
+            $table->json('features')->nullable();
+            $table->string('status')->nullable();
             $table->boolean('is_published')->default(false);
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
+
     }
 
     /**

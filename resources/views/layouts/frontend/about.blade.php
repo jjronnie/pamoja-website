@@ -58,10 +58,10 @@
                         </div>
                     </div>
 
-                    <button
+                    <a href="{{ route('about') }}"
                         class="btn">
                         Learn More About Us
-                    </button>
+                </a>
                 </div>
             </div>
         </div>

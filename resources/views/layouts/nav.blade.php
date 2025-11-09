@@ -28,10 +28,14 @@
                     <h3 class="text-sm font-medium text-gray-900 mb-3">Quick Access</h3>
                     <div class="space-y-2">
                         
-                        <a href="#" class="quick-access-item">
+                        <a href="{{ route('admin.properties.create') }}" class="quick-access-item btn">
                             <i data-lucide="user-plus" class="w-4 h-4"></i>
-                            <span class="text-sm">Add Employee</span>
+                            <span class="text-sm">Add Property</span>
                         </a>
+
+                         @include('admin.categories.partials.create')
+
+                        
 
                      
 
