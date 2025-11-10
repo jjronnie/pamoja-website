@@ -72,7 +72,7 @@
                     <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
                         <h2 class="text-2xl font-bold text-gray-900 mb-4">Property Description</h2>
                         <div class="prose max-w-none text-gray-600 space-y-4">
-                            <p>{{ $property->short_description ?? '' }}</p>
+                            <p>{{ $property->description ?? '' }}</p>
 
 
                         </div>
