@@ -85,7 +85,7 @@ class SEOService
     public function setProperty($property)
     {
         $title = $property->name;
-        $description = substr(strip_tags($property->description), 0, 160);
+        $description = substr(strip_tags($property->short_description), 0, 160);
         $url = route('properties.show', $property->slug);
         $image = $property->getFeaturedImageUrl('preview');
         $category = $property->categories()->first();
