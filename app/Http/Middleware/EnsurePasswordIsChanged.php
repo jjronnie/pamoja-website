@@ -23,7 +23,7 @@ class EnsurePasswordIsChanged
             }
 
             // Flash a message and redirect to a forced password change route
-            session()->flash('warning', 'You must change your  password before continuing.');
+            session()->flash('warning', 'Please change your  password before continuing.');
 
             return redirect()->route('profile.edit');
         }
