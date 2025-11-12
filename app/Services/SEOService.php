@@ -99,7 +99,7 @@ class SEOService
                 'real estate Kampala',
             ]))
             ->setCanonical($url)
-            ->addMeta('property:price:amount', '')
+            ->addMeta('property:price:amount', 'Negotiable')
             ->addMeta('property:price:currency', 'UGX')
             ->addMeta('article:published_time', $property->created_at->toIso8601String())
             ->addMeta('article:modified_time', $property->updated_at->toIso8601String());
@@ -140,8 +140,8 @@ class SEOService
             ->image($image)
             ->address(Schema::postalAddress()
 
-                // ->streetAddress($property->address)
-                // ->addressLocality($property->city)
+                ->streetAddress($property->location)
+                ->addressLocality($property->location)
                 // ->addressRegion($property->region)
 
                 ->addressCountry('UG'))
@@ -180,37 +180,7 @@ class SEOService
         JsonLd::addValue('breadcrumb', $breadcrumb->toArray());
     }
 
-    // public function setService($service)
-    // {
-    //     $title = $service->title . ' Services | Pamoja Chambers';
-    //     $description = substr(strip_tags($service->description), 0, 160);
-    //     $url = route('service.show', $service->slug);
 
-    //     SEOMeta::setTitle($title)
-    //         ->setDescription($description)
-    //         ->setKeywords([$service->title, 'legal services Uganda', 'Kampala', 'professional services'])
-    //         ->setCanonical($url);
-
-    //     OpenGraph::setTitle($service->title)
-    //         ->setDescription($description)
-    //         ->setUrl($url)
-    //         ->setType('article');
-
-    //     TwitterCard::setTitle($service->title)
-    //         ->setDescription($description);
-
-    //     // Service Schema
-    //     $serviceSchema = Schema::service()
-    //         ->name($service->title)
-    //         ->description($description)
-    //         ->provider(Schema::organization()
-    //             ->name('Pamoja Chambers')
-    //             ->url(url('/')))
-    //         ->areaServed('Uganda')
-    //         ->serviceType($service->title);
-
-    //     JsonLd::addValue('structuredData', $serviceSchema->toArray());
-    // }
 
     public function setAbout()
     {
@@ -273,5 +243,124 @@ class SEOService
             ->url(route('properties'));
 
         JsonLd::addValue('structuredData', $collectionPage->toArray());
+    }
+
+
+    public function setCategorySeo($category)
+    {
+        $title = $category->name . ' - Properties for Sale in Uganda';
+
+        // Define a generic, keyword-rich description for the category
+        $description = $category->description;
+
+        $url = route('categories.show', $category->slug);
+
+        // Use a generic placeholder image or a site logo for categories
+        $image = '/assets/img/scale1.webp';
+
+        // 1. Basic SEO Tags (SEOMeta)
+        SEOMeta::setTitle($title)
+            ->setDescription($description)
+            ->setKeywords([
+                $category->name,
+                $category->name . ' Uganda',
+                'properties for sale',
+                'real estate listing'
+            ])
+            ->setCanonical($url);
+
+        // 2. OpenGraph Tags (for social sharing)
+        OpenGraph::setTitle($title)
+            ->setDescription($description)
+            ->setUrl($url)
+            ->setType('collection')
+            ->addImage($image, [
+                'height' => 630,
+                'width' => 1200,
+                'alt' => $category->name . ' listings'
+            ]);
+
+        // 3. Twitter Card Tags
+        TwitterCard::setTitle($title)
+            ->setDescription($description)
+            ->setImage($image);
+
+        // 4. Schema.org BreadcrumbList (JSON-LD)
+        $breadcrumb = Schema::breadcrumbList()
+            ->itemListElement([
+                Schema::listItem()
+                    ->position(1)
+                    ->name('Home')
+                    ->item(url('/')),
+                Schema::listItem()
+                    ->position(2)
+                    ->name('Categories')
+                    ->item(route('properties')),
+                Schema::listItem()
+                    ->position(3)
+                    ->name($category->name)
+                    ->item($url)
+            ]);
+
+        JsonLd::addValue('breadcrumb', $breadcrumb->toArray());
+    }
+
+    public function setServicesSeo()
+    {
+        $services = [
+            'Debt Collection',
+            'Court Bailiffs',
+            'Property Sales',
+            'Legal Consultants'
+        ];
+
+        $title = 'Professional Services | ' . implode(', ', $services);
+        $description = 'Offering expert legal and real estate services including ' . implode(', ', $services) . ' across Uganda.';
+        $url = route('services');
+        $image = '/assets/img/scale1.webp';
+
+        $keywords = array_merge($services, [
+            'legal services Uganda',
+            'Uganda bailiffs',
+            'debt recovery Kampala',
+            'property sales Uganda'
+        ]);
+
+        // 1. Basic SEO Tags (SEOMeta)
+        SEOMeta::setTitle($title)
+            ->setDescription($description)
+            ->setKeywords($keywords)
+            ->setCanonical($url);
+
+        // 2. OpenGraph Tags (for social sharing)
+        OpenGraph::setTitle($title)
+            ->setDescription($description)
+            ->setUrl($url)
+            ->setType('website')
+            ->addImage($image, [
+                'height' => 630,
+                'width' => 1200,
+                'alt' => 'Professional Services in Uganda'
+            ]);
+
+        // 3. Twitter Card Tags
+        TwitterCard::setTitle($title)
+            ->setDescription($description)
+            ->setImage($image);
+
+        // 4. Schema.org BreadcrumbList (JSON-LD)
+        $breadcrumb = Schema::breadcrumbList()
+            ->itemListElement([
+                Schema::listItem()
+                    ->position(1)
+                    ->name('Home')
+                    ->item(url('/')),
+                Schema::listItem()
+                    ->position(2)
+                    ->name('Services')
+                    ->item($url)
+            ]);
+
+        JsonLd::addValue('breadcrumb', $breadcrumb->toArray());
     }
 }

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/services', [FrontendController::class, 'services'])->name('services');
     Route::get('/properties', [FrontendController::class, 'properties'])->name('properties');
     Route::get('/properties/{slug}', [FrontendController::class, 'single'])->name('properties.show');
+    Route::get('/categories/{slug}', [FrontendController::class, 'category'])->name('categories.show');
   
 Route::post('/contact/send', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 

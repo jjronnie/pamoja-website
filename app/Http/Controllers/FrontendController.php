@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use App\Services\SEOService;
+use App\Models\Category;
 
 class FrontendController extends Controller
 {
@@ -20,6 +21,8 @@ class FrontendController extends Controller
     {
         $this->seoService->setHome();
 
+        $categories = Category::all();
+
         $properties = Property::with(['categories', 'media'])
             ->where('is_published', true)
             ->where('is_featured', true)
@@ -27,7 +30,7 @@ class FrontendController extends Controller
             ->take(6)
             ->get();
 
-        return view('welcome', compact('properties'));
+        return view('welcome', compact('properties', 'categories'));
     }
 
 
@@ -39,6 +42,7 @@ class FrontendController extends Controller
 
     public function services()
     {
+        $this->seoService->setServicesSeo();
         return view('pages.services');
     }
 
@@ -89,6 +93,23 @@ class FrontendController extends Controller
         return view('pages.single-property', compact('property', 'relatedProperties'));
     }
 
+
+    public function category($slug)
+    {
+        $category = Category::with(['properties'])
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        $this->seoService->setCategorySeo($category);
+
+        $properties = $category->properties()
+            ->where('is_published', 1)
+            ->with('categories')
+            ->paginate(12);
+
+
+        return view('pages.show-category', compact('category', 'properties'));
+    }
 
 
 

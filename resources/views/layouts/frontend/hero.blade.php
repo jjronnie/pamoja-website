@@ -3,105 +3,117 @@
         style="background-image: url('assets/img/scale1.webp');"></div>
     {{-- <div class="absolute inset-0 gradient-overlay"></div> --}}
 
- <div class="relative h-full flex flex-col items-center justify-center px-4 md:px-8">
-    <div class="container mx-auto">
-        <div id="banner-slides" class="text-white relative" style="min-height: 400px;">
+    <div class="relative h-full flex flex-col items-center justify-center px-4 md:px-8">
+        <div class="container mx-auto">
+            <div id="banner-slides" class="text-white relative" style="min-height: 400px;">
 
-            <!-- Slide 1 -->
-            <div class="banner-slide active text-center md:text-left">
-                <p class="text-gray-300 text-base md:text-lg mb-2 md:mb-3">WELCOME TO PAMOJA CHAMBERS</p>
-                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-                    Professional Debt<br>Collection Services
-                </h1>
-                <p class="text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0">
-                    We provide comprehensive debt recovery solutions with integrity, professionalism, and a commitment to results.
-                </p>
+                <!-- Slide 1 -->
+                <div class="banner-slide active text-center md:text-left">
+                    <p class="text-gray-300 text-base md:text-lg mb-2 md:mb-3">WELCOME TO PAMOJA CHAMBERS</p>
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+                        Professional Debt<br>Collection Services
+                    </h1>
+                    <p class="text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0">
+                        We provide comprehensive debt recovery solutions with integrity, professionalism, and a
+                        commitment to results.
+                    </p>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="{{ route('about') }}"
-                       class="bg-red-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-red-800 transition text-base md:text-lg font-semibold inline-flex items-center justify-center">
-                        About Us <i class="fa fa-arrow-up rotate-45 ml-2"></i>
-                    </a>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="{{ route('about') }}"
+                            class="bg-red-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-red-800 transition text-base md:text-lg font-semibold inline-flex items-center justify-center">
+                            About Us <i class="fa fa-arrow-up rotate-45 ml-2"></i>
+                        </a>
 
-                    <a href="{{ route('services') }}"
-                       class="bg-white text-red-900 px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-100 transition inline-flex items-center justify-center text-base md:text-lg font-semibold">
-                        <i class="fas fa-play-circle mr-2"></i> Our Services
-                    </a>
+                        <a href="{{ route('services') }}"
+                            class="bg-white text-red-900 px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-100 transition inline-flex items-center justify-center text-base md:text-lg font-semibold">
+                            <i class="fas fa-play-circle mr-2"></i> Our Services
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="banner-slide text-center md:text-left">
+                    <p class="text-gray-300 text-base md:text-lg mb-2 md:mb-3">LEGAL EXPERTISE YOU CAN TRUST</p>
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+                        Court Bailiffs &<br>Legal Consultants
+                    </h1>
+                    <p class="text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0">
+                        Experienced legal professionals ready to handle your most complex cases with precision and care.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="{{ route('services') }}"
+                            class="bg-red-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-red-800 transition text-base md:text-lg font-semibold inline-flex items-center justify-center">
+                            Our Services
+                        </a>
+
+                        <a href="{{ route('contact') }}"
+                            class="bg-white text-red-900 px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-100 transition inline-flex items-center justify-center text-base md:text-lg font-semibold">
+                            <i class="fas fa-phone mr-2"></i> Contact Us
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="banner-slide text-center md:text-left">
+                    <p class="text-gray-300 text-base md:text-lg mb-2 md:mb-3">PROPERTY SOLUTIONS</p>
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+                        Auctioneering &<br>Property Sales
+                    </h1>
+                    <p class="text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0">
+                        Transparent property auctions and sales services. Find your next opportunity or liquidate assets
+                        efficiently.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="{{ route('contact') }}"
+                            class="bg-red-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-red-800 transition text-base md:text-lg font-semibold inline-flex items-center justify-center">
+                            Get In Touch
+                        </a>
+
+                        <a href="{{ route('properties') }}"
+                            class="bg-white text-red-900 px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-100 transition inline-flex items-center justify-center text-base md:text-lg font-semibold">
+                            <i class="fas fa-home mr-2"></i> View Properties
+                        </a>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Slide 2 -->
-            <div class="banner-slide text-center md:text-left">
-                <p class="text-gray-300 text-base md:text-lg mb-2 md:mb-3">LEGAL EXPERTISE YOU CAN TRUST</p>
-                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-                    Court Bailiffs &<br>Legal Consultants
-                </h1>
-                <p class="text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0">
-                    Experienced legal professionals ready to handle your most complex cases with precision and care.
-                </p>
+        <!-- Search Form -->
+        <div class="w-full max-w-6xl mx-auto mt-8 md:mt-12 px-4">
+            <!-- Alpine component to manage the selected route -->
+            <div x-data="{
+        // Set the initial route to 'properties' (All Categories)
+        selectedRoute: '{{ route('properties') }}'
+    }" class="bg-white rounded-xl shadow-2xl p-4 md:p-6">
+                <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4">
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="{{ route('services') }}"
-                       class="bg-red-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-red-800 transition text-base md:text-lg font-semibold inline-flex items-center justify-center">
-                        Our Services
-                    </a>
+                    <!-- Category Dropdown -->
+                    <select x-model="selectedRoute"
+                        class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-900 w-full">
 
-                    <a href="{{ route('contact') }}"
-                       class="bg-white text-red-900 px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-100 transition inline-flex items-center justify-center text-base md:text-lg font-semibold">
-                        <i class="fas fa-phone mr-2"></i> Contact Us
-                    </a>
-                </div>
-            </div>
+                        <!-- Option for "All Categories" -->
+                        <option value="{{ route('properties') }}" selected>All Categories</option>
 
-            <!-- Slide 3 -->
-            <div class="banner-slide text-center md:text-left">
-                <p class="text-gray-300 text-base md:text-lg mb-2 md:mb-3">PROPERTY SOLUTIONS</p>
-                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-                    Auctioneering &<br>Property Sales
-                </h1>
-                <p class="text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0">
-                    Transparent property auctions and sales services. Find your next opportunity or liquidate assets efficiently.
-                </p>
+                        <!-- Dynamic Category Options -->
+                        @foreach ($categories as $category)
+                        <option value="{{ route('categories.show', $category->slug) }}">
+                            {{ $category->name ?? '' }}
+                        </option>
+                        @endforeach
+                    </select>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="{{ route('contact') }}"
-                       class="bg-red-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-red-800 transition text-base md:text-lg font-semibold inline-flex items-center justify-center">
-                        Get In Touch
-                    </a>
-
-                    <a href="{{ route('properties') }}"
-                       class="bg-white text-red-900 px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-100 transition inline-flex items-center justify-center text-base md:text-lg font-semibold">
-                        <i class="fas fa-home mr-2"></i> View Properties
+                    <!-- Dynamic Link Button -->
+                    <!-- The href attribute dynamically updates based on the selectedRoute variable -->
+                    <a x-bind:href="selectedRoute"
+                        class="bg-red-900 text-white px-6 py-3 rounded-lg hover:bg-red-800 transition font-semibold w-full text-center inline-block">
+                        Find Properties
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Search Form -->
-    <div class="w-full max-w-6xl mx-auto mt-8 md:mt-12 px-4">
-        <div class="bg-white rounded-xl shadow-2xl p-4 md:p-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                <select class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-900 w-full">
-                    <option>Type</option>
-                    <option>Auctioneering</option>
-                </select>
-
-                <select class="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-900 w-full">
-                    <option>Category</option>
-                    <option>Commercial</option>
-                    <option>Residential</option>
-                    <option>Land</option>
-                </select>
-
-                <a href="{{ route('properties') }}"
-                   class="bg-red-900 text-white px-6 py-3 rounded-lg hover:bg-red-800 transition font-semibold w-full text-center inline-block">
-                    Find Properties
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 
 
     <!-- Slide Indicators -->

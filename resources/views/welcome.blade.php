@@ -119,7 +119,8 @@
                 team today and let us help you resolve your case efficiently</p>
             <button
                 class="bg-white text-red-900 px-8 md:px-10 py-3 md:py-4 rounded-lg hover:bg-gray-100 transition text-base md:text-lg font-semibold">
-                Schedule a Consultation
+                <a href="{{ route('contact') }}">
+                    Get In Touch</a>
             </button>
         </div>
     </section>

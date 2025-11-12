@@ -4,7 +4,7 @@
 
     <x-breadcrumb :items="[
         ['label' => 'Home', 'url' => route('home')],
-        ['label' => 'Connect with Us'],
+        ['label' => 'Contact Us'],
     ]" description="We're here to help. Contact us by email, phone, or using the form below.." />
 
     <!-- Contact Section -->
@@ -98,7 +98,7 @@
                 </div>
 
                 <!-- Contact Form -->
-               @include('layouts.frontend.contact-form')
+                @include('layouts.frontend.contact-form')
 
 
             </div>

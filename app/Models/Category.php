@@ -19,9 +19,8 @@ class Category extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('name') // Generate slug from the 'name' field
-            ->saveSlugsTo('slug')      // Save it to the 'slug' column
-            ->doNotGenerateSlugsOnUpdate(); // Optional: Keep slug the same on update
+            ->generateSlugsFrom('name') 
+            ->saveSlugsTo('slug');
     }
 
     /**
@@ -31,4 +30,6 @@ class Category extends Model
     {
         return $this->belongsToMany(Property::class);
     }
+
+    
 }

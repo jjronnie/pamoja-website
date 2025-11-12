@@ -17,10 +17,7 @@
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3 group-hover:text-white">Debt Collection</h3>
         <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">Professional debt recovery services with high success rates. We handle commercial and consumer debts with discretion and efficiency.</p>
-        <a href="#" class="text-red-900 font-semibold flex items-center space-x-2 hover:underline text-sm md:text-base">
-            <span>Learn More</span>
-            <i class="fas fa-arrow-right"></i>
-        </a>
+       
     </div>
 
     <!-- Service Card -->
@@ -30,10 +27,7 @@
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Court Bailiffs</h3>
         <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">Licensed court bailiffs executing court orders with professionalism. We ensure legal compliance in all enforcement actions.</p>
-        <a href="#" class="text-red-900 font-semibold flex items-center space-x-2 hover:underline text-sm md:text-base">
-            <span>Learn More</span>
-            <i class="fas fa-arrow-right"></i>
-        </a>
+        {{-- --}}
     </div>
 
     <!-- Service Card -->
@@ -43,10 +37,7 @@
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Property Sales</h3>
         <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">Transparent property transactions and valuations. We help you buy, sell, or value properties at fair market prices.</p>
-        <a href="#" class="text-red-900 font-semibold flex items-center space-x-2 hover:underline text-sm md:text-base">
-            <span>Learn More</span>
-            <i class="fas fa-arrow-right"></i>
-        </a>
+       
     </div>
 
     <!-- Service Card -->
@@ -56,10 +47,7 @@
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Legal Consultants</h3>
         <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">Expert legal advice on civil, commercial, and property matters. Our team provides strategic guidance for complex cases.</p>
-        <a href="#" class="text-red-900 font-semibold flex items-center space-x-2 hover:underline text-sm md:text-base">
-            <span>Learn More</span>
-            <i class="fas fa-arrow-right"></i>
-        </a>
+       
     </div>
 
     <!-- Service Card -->
@@ -69,10 +57,7 @@
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Commission Agents</h3>
         <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">Reliable commission agent services for property transactions. We facilitate smooth deals between buyers and sellers.</p>
-        <a href="#" class="text-red-900 font-semibold flex items-center space-x-2 hover:underline text-sm md:text-base">
-            <span>Learn More</span>
-            <i class="fas fa-arrow-right"></i>
-        </a>
+       
     </div>
 
     <!-- Service Card -->
@@ -82,10 +67,7 @@
         </div>
         <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Auctioneering</h3>
         <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">Professional auction services for properties and assets. Transparent bidding processes with competitive outcomes.</p>
-        <a href="#" class="text-red-900 font-semibold flex items-center space-x-2 hover:underline text-sm md:text-base">
-            <span>Learn More</span>
-            <i class="fas fa-arrow-right"></i>
-        </a>
+       
     </div>
 </div>
 

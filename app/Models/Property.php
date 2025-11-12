@@ -16,31 +16,34 @@ class Property extends Model implements HasMedia
 {
     use HasFactory, HasSlug, InteractsWithMedia;
 
-      // this will auto load realation with eager load
-     protected $with = ['media'];
+    // this will auto load realation with eager load
+    protected $with = ['media'];
 
- protected $fillable = [
-    'name',
-    'slug',
-    'size',
-    'ownership',
-    'description',
-    'short_description',
-    'directions',
-    'features',
-    'status',
-    'location',
-    'latitude',
-    'longitude',
-    'is_published',
-    'is_featured',
-    'created_by',
-];
+    protected $fillable = [
+        'name',
+        'slug',
+        'size',
+        'ownership',
+        'description',
+        'short_description',
+        'directions',
+        'features',
+        'status',
+        'location',
+        'latitude',
+        'longitude',
+        'is_published',
+        'is_featured',
+        'created_by',
+    ];
+
+
 
 
     protected $casts = [
         'is_published' => 'boolean',
         'is_featured' => 'boolean',
+        // 'features' => 'array',
     ];
 
     /**
@@ -59,7 +62,7 @@ class Property extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
 
-        
+
 
 
         // Featured image collection - single image
@@ -72,7 +75,7 @@ class Property extends Model implements HasMedia
                     ->sharpen(10)
                     ->format('webp')
                     ->quality(80)
-                     ->nonQueued();
+                    ->nonQueued();
 
                 $this->addMediaConversion('preview')
                     ->width(800)
@@ -80,7 +83,7 @@ class Property extends Model implements HasMedia
                     ->sharpen(10)
                     ->format('webp')
                     ->quality(80)
-                     ->nonQueued();
+                    ->nonQueued();
             });
 
         // Gallery collection - multiple images
@@ -92,7 +95,7 @@ class Property extends Model implements HasMedia
                     ->sharpen(10)
                     ->format('webp')
                     ->quality(80)
-                     ->nonQueued();
+                    ->nonQueued();
 
                 $this->addMediaConversion('large')
                     ->width(1200)
@@ -100,7 +103,7 @@ class Property extends Model implements HasMedia
                     ->sharpen(10)
                     ->format('webp')
                     ->quality(80)
-                     ->nonQueued();
+                    ->nonQueued();
             });
     }
     /**

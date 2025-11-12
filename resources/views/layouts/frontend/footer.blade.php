@@ -39,10 +39,15 @@
             <div>
                 <h3 class="text-lg md:text-xl font-bold mb-4">Quick Links</h3>
                 <ul class="space-y-2">
-                    <li><a href="{{ route('about') }}" class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">About
+                    <li><a href="{{ route('home') }}"
+                            class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Home</a>
+                    </li>
+                    <li><a href="{{ route('about') }}"
+                            class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">About
                             Us</a>
                     </li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Our
+                    <li><a href="{{ route('services') }}"
+                            class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Our
                             Services</a></li>
                     <li><a href="{{ route('properties') }}"
                             class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Properties</a>
@@ -50,7 +55,7 @@
                     <li><a href="{{ route('contact') }}"
                             class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Contact</a>
                     </li>
-                   
+
                 </ul>
             </div>
 
@@ -58,13 +63,17 @@
             <div>
                 <h3 class="text-lg md:text-xl font-bold mb-4">Our Services</h3>
                 <ul class="space-y-2">
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Debt
+                    <li><a href="{{ route('services') }}"
+                            class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Debt
                             Collection</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Court
+                    <li><a href="{{ route('services') }}"
+                            class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Court
                             Bailiffs</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Property
+                    <li><a href="{{ route('services') }}"
+                            class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Property
                             Sales</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Legal
+                    <li><a href="{{ route('services') }}"
+                            class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Legal
                             Consultants</a></li>
                     <li><a href="{{ route('services') }}"
                             class="text-gray-400 hover:text-red-500 transition text-sm md:text-base">Auctioneering</a>
@@ -88,7 +97,8 @@
         </div>
 
         <div class="border-t border-gray-800 pt-6 md:pt-8 text-center text-gray-400 text-sm md:text-base">
-            <p>&copy; 2025 Pamoja Chambers. All rights reserved. | Powered by <a class="text-gray-100" href="https://techtowerinc.com" target="_blank" rel="noopener noreferrer">TechTower Inc</a> </p>
+            <p>&copy; 2025 Pamoja Chambers. All rights reserved. | Powered by <a class="text-gray-100"
+                    href="https://techtowerinc.com" target="_blank" rel="noopener noreferrer">TechTower Inc</a> </p>
         </div>
     </div>
 </footer>

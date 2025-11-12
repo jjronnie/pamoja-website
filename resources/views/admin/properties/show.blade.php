@@ -4,18 +4,18 @@
     <div class="flex justify-between items-center mb-6">
         <x-page-title title="Property Details: {{ $property->name }}" />
 
-</div>
- <div class="flex items-center space-x-2 mb-6">
-    <a href="{{ route('admin.properties.toggleFeatured', $property) }}"
-       class="btn {{ $property->is_featured ? 'btn' : 'btn-gray' }}">
-        {{ $property->is_featured ? 'Remove from Featured' : 'Add to Featured' }}
-        <i data-lucide="star" class="w-4 h-4 ml-2"></i>
-    </a>
+    </div>
+    <div class="flex items-center space-x-2 mb-6">
+        <a href="{{ route('admin.properties.toggleFeatured', $property) }}"
+            class="btn {{ $property->is_featured ? 'btn' : 'btn-gray' }}">
+            {{ $property->is_featured ? 'Remove from Featured' : 'Add to Featured' }}
+            <i data-lucide="star" class="w-4 h-4 ml-2"></i>
+        </a>
 
-    @include('admin.properties.edit-form')
-</div>
+        @include('admin.properties.edit-form')
+    </div>
 
-    
+
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
@@ -24,7 +24,18 @@
 
             {{-- Property Description Card --}}
             <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">Description</h2>
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Short Description</h2>
+                @if ($property->short_description)
+                <p class="text-gray-600 leading-relaxed">{{ $property->short_description }}</p>
+                @else
+                <p class="text-gray-500 italic">No short description provided.</p>
+                @endif
+            </div>
+
+
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Full Description</h2>
                 @if ($property->description)
                 <p class="text-gray-600 leading-relaxed">{{ $property->description }}</p>
                 @else
@@ -92,6 +103,11 @@
 
                 <p class="detail-row">
                     <span class="font-medium text-gray-500">Status:</span>
+                    <span class="text-sm bg-gray-100 px-2 py-0.5 rounded">{{ $property->status }}</span>
+                </p>
+
+                <p class="detail-row">
+                    <span class="font-medium text-gray-500">Visibility:</span>
                     <span
                         class="text-sm font-semibold {{ $property->is_published ? 'text-green-600' : 'text-yellow-600' }}">
                         {{ $property->is_published ? 'Published' : 'Draft' }}
@@ -99,14 +115,22 @@
                 </p>
 
                 <p class="detail-row">
-                    <span class="font-medium text-gray-500">Size:</span>
-                    <span class="text-gray-700">{{ $property->size ?? 'N/A' }}</span>
+                    <span class="font-medium text-gray-500">Location:</span>
+                    <span class="text-gray-700">{{ $property->location ?? 'N/A' }}</span>
                 </p>
 
                 <p class="detail-row">
-                    <span class="font-medium text-gray-500">Ownership:</span>
-                    <span class="text-gray-700">{{ $property->ownership ?? 'N/A' }}</span>
+                    <span class="font-medium text-gray-500">Coordinates:</span>
+                    <span class="text-gray-700">Latitude: {{ $property->latitude ?? 'N/A' }}</span>
+                    <span class="text-gray-700">Longitude: {{ $property->longitude ?? 'N/A' }}</span>
                 </p>
+
+                <p class="detail-row">
+                    <span class="font-medium text-gray-500">Directions:</span>
+                    <span class="text-gray-700">{{ $property->directions ?? 'N/A' }}</span>
+                </p>
+
+
 
                 <p class="detail-row">
                     <span class="font-medium text-gray-500">Created By:</span>
@@ -135,6 +159,30 @@
                 <p class="text-gray-500 italic">No categories assigned.</p>
                 @endif
             </div>
+
+            <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Property Details</h2>
+
+                @php
+                $features = json_decode($property->features ?? '{}', true) ?: [];
+                @endphp
+
+                @if(count($features))
+                <div class="space-y-2">
+                    @foreach($features as $key => $value)
+                    <div class="border-b pb-1">
+                        <span class="text-gray-600 font-semibold">{{ $key }}:</span>
+                        <span class="text-gray-900 ml-1">{{ $value }}</span>
+                    </div>
+                    @endforeach
+                </div>
+                @else
+                <p class="text-gray-500">No features added for this property.</p>
+                @endif
+            </div>
+
+
+
 
         </div>
     </div>

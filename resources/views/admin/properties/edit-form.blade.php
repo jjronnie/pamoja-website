@@ -1,6 +1,6 @@
 <x-slide-form button-text="Edit Property" title="Edit Property">
 
-       <form method="POST" action="{{ route('admin.properties.update', $property) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.properties.update', $property) }}" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
@@ -19,27 +19,61 @@
 
                             <div>
                                 <label for="name" class="label"> Name <span class="text-red-600"> *</span></label>
-                                <input type="text" name="name" id="name" value="{{ old('name', $property->name) }}" required
-                                    class="input @error('name') border-red-500 @enderror" />
+                                <input type="text" name="name" id="name" value="{{ old('name', $property->name) }}"
+                                    required class="input @error('name') border-red-500 @enderror" />
                                 @error('name')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             <div>
-                                <label for="size" class="label">Size (e.g., 1200 sqft)</label>
-                                <input type="text" name="size" id="size" value="{{ old('size', $property->size) }}"
-                                    class="input @error('size') border-red-500 @enderror" />
-                                @error('size')
+                                <label for="location" class="label">Location</label>
+                                <input type="text" name="location" id="location"
+                                    value="{{ old('location', $property->location) }}"
+                                    class="input @error('location') border-red-500 @enderror" />
+                                @error('location')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             <div>
-                                <label for="ownership" class="label">Ownership</label>
-                                <input type="text" name="ownership" id="ownership" value="{{ old('ownership', $property->ownership) }}"
-                                    class="input @error('ownership') border-red-500 @enderror" />
-                                @error('ownership')
+                                <label for="directions" class="label">directions</label>
+                                <input type="text" name="directions" id="directions"
+                                    value="{{ old('directions', $property->directions) }}"
+                                    class="input @error('directions') border-red-500 @enderror" />
+                                @error('directions')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="latitude" class="label">latitude</label>
+                                <input type="text" name="latitude" id="latitude"
+                                    value="{{ old('latitude', $property->latitude) }}"
+                                    class="input @error('latitude') border-red-500 @enderror" />
+                                @error('latitude')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="longitude" class="label">longitude</label>
+                                <input type="text" name="longitude" id="longitude"
+                                    value="{{ old('longitude', $property->longitude) }}"
+                                    class="input @error('longitude') border-red-500 @enderror" />
+                                @error('longitude')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+
+
+                            <div>
+                                <label for="status" class="label">status</label>
+                                <input type="text" name="status" id="status"
+                                    value="{{ old('status', $property->status) }}"
+                                    class="input @error('status') border-red-500 @enderror" />
+                                @error('status')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -51,6 +85,15 @@
                                 <textarea name="description" id="description" rows="5"
                                     class="input @error('description') border-red-500 @enderror">{{ old('description', $property->description) }}</textarea>
                                 @error('description')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label for="short_description" class="label">short_description</label>
+                                <textarea name="short_description" id="short_description" rows="5"
+                                    class="input @error('short_description') border-red-500 @enderror">{{ old('short_description', $property->short_description) }}</textarea>
+                                @error('short_description')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -83,9 +126,9 @@
                                 </button>
                             </div>
                             <div class="flex justify-center">
-                                <img src="{{ asset('storage/' . $property->featured_image) }}" 
-                                     alt="Current featured image"
-                                     class="max-w-md w-full h-64 object-cover rounded-lg shadow-md border-2 border-gray-300">
+                                <img src="{{ asset('storage/' . $property->featured_image) }}"
+                                    alt="Current featured image"
+                                    class="max-w-md w-full h-64 object-cover rounded-lg shadow-md border-2 border-gray-300">
                             </div>
                         </div>
                     </div>
@@ -135,7 +178,7 @@
                     @enderror
                 </div>
 
-             
+
 
             </div>
 
@@ -145,8 +188,10 @@
                     <label for="is_published" class="label">Publish Status <span class="text-red-600">*</span></label>
                     <select name="is_published" id="is_published"
                         class="input @error('is_published') border-red-500 @enderror">
-                        <option value="1" {{ old('is_published', $property->is_published) == '1' ? 'selected' : '' }}>Published</option>
-                        <option value="0" {{ old('is_published', $property->is_published) == '0' ? 'selected' : '' }}>Draft</option>
+                        <option value="1" {{ old('is_published', $property->is_published) == '1' ? 'selected' : ''
+                            }}>Published</option>
+                        <option value="0" {{ old('is_published', $property->is_published) == '0' ? 'selected' : ''
+                            }}>Draft</option>
                     </select>
                     @error('is_published')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -161,9 +206,9 @@
                         @forelse($categories as $category)
                         <div class="flex items-center">
                             <input type="checkbox" name="categories[]" id="category_{{ $category->id }}"
-                                value="{{ $category->id }}" 
-                                {{ in_array($category->id, old('categories', $property->categories->pluck('id')->toArray())) ? 'checked' : '' }}
-                                class="h-4 w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
+                                value="{{ $category->id }}" {{ in_array($category->id, old('categories',
+                            $property->categories->pluck('id')->toArray())) ? 'checked' : '' }}
+                            class="h-4 w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
                             <label for="category_{{ $category->id }}" class="ml-3 block text-sm text-gray-700">
                                 {{ $category->name }}
                             </label>
@@ -179,6 +224,55 @@
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+
+                    <!-- Features (Dynamic Key-Value Pairs) -->
+                    <div x-data="{
+        features: @json(old('features', $item->features ?? [])),
+
+        // Helper function to add a new empty feature
+        addFeature() {
+            this.features.push({ key: '', value: '' });
+        },
+
+        // Helper function to remove a feature by index
+        removeFeature(index) {
+            this.features.splice(index, 1);
+        }
+    }">
+                        <label class="label">Features & Custom Fields</label>
+
+                        <!-- Loop through existing features -->
+                        <template x-for="(feature, index) in features" :key="index">
+                            <div class="flex space-x-2 mb-2 items-center">
+                                <!-- Use index in the name attribute for Laravel to receive it as an array of objects -->
+                                <input type="text" :name="'features[' + index + '][key]'" placeholder="Field Name"
+                                    x-model="feature.key" class="input flex-1 border border-gray-300 rounded-md p-2" />
+                                <input type="text" :name="'features[' + index + '][value]'" placeholder="Value"
+                                    x-model="feature.value"
+                                    class="input flex-1 border border-gray-300 rounded-md p-2" />
+                                <button type="button" @click="removeFeature(index)"
+                                    class="btn bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-md transition duration-150">
+                                    Remove
+                                </button>
+                            </div>
+                        </template>
+
+                        <button type="button" @click="addFeature()"
+                            class="btn mt-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-150">
+                            Add Feature
+                        </button>
+
+                        @error('features')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+
+
             </div>
 
         </div>
@@ -196,9 +290,9 @@
 
 </x-slide-form>
 
-    @push('scripts')
-    <script>
-        // Store gallery files for management
+@push('scripts')
+<script>
+    // Store gallery files for management
         let galleryFiles = [];
         let galleryDataTransfer = new DataTransfer();
         let removedGalleryImages = [];
@@ -417,5 +511,5 @@
             fileCount.textContent = `${galleryFiles.length} file(s) selected`;
             galleryCount.textContent = galleryFiles.length;
         }
-    </script>
-    @endpush
+</script>
+@endpush

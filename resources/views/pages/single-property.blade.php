@@ -39,7 +39,9 @@
                                 @endphp
 
                                 <p class="text-2xl md:text-2xl font-bold text-red-900">
+                                    <a href="{{ route('categories.show', $category->slug) }}">
                                     {{ $category?->name ?? '-' }}
+                                    </a>
                                 </p>
                             </div>
 

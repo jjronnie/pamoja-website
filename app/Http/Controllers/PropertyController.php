@@ -116,10 +116,20 @@ class PropertyController extends Controller
 
          $data = $request->validated();
 
-    // Encode features as JSON if provided
-    if (isset($data['features']) && is_array($data['features'])) {
-        $data['features'] = json_encode($data['features']);
-    }
+      if (isset($data['features'])) {
+            // Convert array of key-value pairs to associative array
+            $featuresArray = [];
+            foreach ($data['features'] as $item) {
+                if (!empty($item['key'])) {
+                    $featuresArray[$item['key']] = $item['value'] ?? '';
+                }
+            }
+            $data['features'] = json_encode($featuresArray);
+        } else {
+            $data['features'] = json_encode([]);
+        }
+
+        
     $property->update($data);
         // Update property fields
 
