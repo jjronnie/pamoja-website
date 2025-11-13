@@ -2,9 +2,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.service-card:hover * {
-    color: white;
-}
+
 
 .nav-link {
     @apply pb-1 text-gray-900 border-b-2  border-transparent transition-all duration-300;
