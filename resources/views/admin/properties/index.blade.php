@@ -22,14 +22,17 @@
 
     @else
 
-    <x-table :headers="['#', 'property','ownership', 'Size', 'Created by' ]" showActions="false">
+    <x-table :headers="['#', 'property','status',  'Created by' ]" showActions="false">
         @foreach ($properties as $index => $property)
 
         <x-table.row>
             <x-table.cell>{{ $index +1 }}</x-table.cell>
             <x-table.cell>{{ $property->name ?? '' }}</x-table.cell>
-            <x-table.cell>{{ $property->ownership ?? '' }}</x-table.cell>
-            <x-table.cell>{{ $property->size ?? '' }}</x-table.cell>
+            <x-table.cell>
+                 <span
+                        class="text-sm font-semibold {{ $property->is_published ? 'text-green-600' : 'text-yellow-600' }}">
+                        {{ $property->is_published ? 'Published' : 'Draft' }}
+                    </span></x-table.cell>
 
                   <x-table.cell>
                 <div class="flex items-center">
