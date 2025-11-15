@@ -25,9 +25,9 @@
                         persists.
                     </p>
 
-                    <a href="{{ route('dashboard') }}"
+                    <a href="{{ route('home') }}"
                         class="inline-block px-6 py-3 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 transition">
-                        Return to Dashboard
+                        Return to home
                     </a>
                 </div>
             </main>          
