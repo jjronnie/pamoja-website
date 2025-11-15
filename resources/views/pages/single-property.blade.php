@@ -40,7 +40,7 @@
 
                                 <p class="text-2xl md:text-2xl font-bold text-red-900">
                                     <a href="{{ route('categories.show', $category->slug) }}">
-                                    {{ $category?->name ?? '-' }}
+                                        {{ $category?->name ?? '-' }}
                                     </a>
                                 </p>
                             </div>
@@ -66,7 +66,7 @@
 
                     </div>
 
-                     <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
+                    <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
                         <h2 class="text-2xl font-bold text-gray-900 mb-4">Property Details</h2>
 
                         @php
@@ -102,9 +102,9 @@
                     </div>
 
 
-                   
 
-                         <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
+
+                    <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
                         <h2 class="text-2xl font-bold text-gray-900 mb-6">Location</h2>
                         <div class="mb-6">
                             <div class="flex items-start space-x-3 mb-4">
@@ -186,7 +186,7 @@
                     </div>
 
 
-               
+
 
 
 
@@ -300,19 +300,20 @@
                             </div>
 
                             <div class="space-y-3 mb-6">
-                                <a href="tel:+256123456789"
+                                <a href="tel:+256 393 243 211"
                                     class="flex items-center justify-center space-x-2 bg-red-900 text-white py-3 rounded-lg hover:bg-red-800 transition">
                                     <i class="fas fa-phone"></i>
                                     <span>+256 393 243 211</span>
                                 </a>
 
-                                <button
+                                <a href="https://wa.me/+256776141212?text={{ $message }}" target="_blank"
                                     class="flex items-center justify-center space-x-2 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition w-full">
                                     <i class="fab fa-whatsapp"></i>
                                     <span>WhatsApp</span>
-                                </button>
+                                </a>
 
-                                <a href="mailto:pamojachambers@gmail.com"
+                                <a href="mailto:pamojachambers@gmail.com?subject=Property%20Inquiry&body={{ urlencode('Hello Pamoja Chambers, I’m interested in this property: ' . route('properties.show', $property->slug)) }} "
+                                    target="_blank"
                                     class="flex items-center justify-center space-x-2 bg-gray-100 text-gray-900 py-3 rounded-lg hover:bg-gray-200 transition">
                                     <i class="fas fa-envelope"></i>
                                     <span class="text-sm">Send Email</span>
