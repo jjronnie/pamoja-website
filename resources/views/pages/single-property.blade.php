@@ -66,22 +66,7 @@
 
                     </div>
 
-
-
-
-
-
-                    <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Property Description</h2>
-                        <div class="prose max-w-none text-gray-600 space-y-4">
-                            <p>{{ $property->description ?? '' }}</p>
-
-
-                        </div>
-                    </div>
-
-
-                    <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
+                     <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
                         <h2 class="text-2xl font-bold text-gray-900 mb-4">Property Details</h2>
 
                         @php
@@ -106,39 +91,20 @@
 
 
 
-                    <h2 class="text-3xl font-bold mb-6">Image Gallery</h2>
-
-                    <!-- Gallery Grid -->
-                    <div
-                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
-
-                        @if($property->getMedia('gallery')->isNotEmpty())
-                        @foreach($property->getMedia('gallery') as $media)
-                        <img src="{{ $media->getUrl('large') }}" alt="{{ $property->name }} Image" loading="lazy"
-                            class="w-full h-full object-cover rounded-md cursor-pointer" onclick="openImage(this.src)">
-                        @endforeach
-                        @else
-                        <x-empty-state message="No Images." />
-                        @endif
-
-                    </div>
-
-
-
-                    <!-- Full Screen Modal -->
-                    <div id="imgModal"
-                        class="fixed inset-0 bg-black bg-opacity-80 hidden z-[999] flex items-center justify-center"
-                        onclick="closeImage()">
-
-                        <img id="modalImg" class="max-w-[95%] max-h-[95%] rounded-lg shadow-lg" />
-
-                        <!-- Close button -->
-                        <button class="absolute top-5 right-5 text-white text-4xl font-bold"
-                            onclick="closeImage()">&times;</button>
-                    </div>
-
 
                     <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Property Description</h2>
+                        <div class="prose max-w-none text-gray-600 space-y-4">
+                            <p>{{ $property->description ?? '' }}</p>
+
+
+                        </div>
+                    </div>
+
+
+                   
+
+                         <div class="bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
                         <h2 class="text-2xl font-bold text-gray-900 mb-6">Location</h2>
                         <div class="mb-6">
                             <div class="flex items-start space-x-3 mb-4">
@@ -183,6 +149,44 @@
 
 
                     </div>
+
+
+
+
+
+                    <h2 class="text-3xl font-bold mb-6">Image Gallery</h2>
+
+                    <!-- Gallery Grid -->
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-white rounded-xl p-6 md:p-8 shadow-lg mb-8">
+
+                        @if($property->getMedia('gallery')->isNotEmpty())
+                        @foreach($property->getMedia('gallery') as $media)
+                        <img src="{{ $media->getUrl('large') }}" alt="{{ $property->name }} Image" loading="lazy"
+                            class="w-full h-full object-cover rounded-md cursor-pointer" onclick="openImage(this.src)">
+                        @endforeach
+                        @else
+                        <x-empty-state message="No Images." />
+                        @endif
+
+                    </div>
+
+
+
+                    <!-- Full Screen Modal -->
+                    <div id="imgModal"
+                        class="fixed inset-0 bg-black bg-opacity-80 hidden z-[999] flex items-center justify-center"
+                        onclick="closeImage()">
+
+                        <img id="modalImg" class="max-w-[95%] max-h-[95%] rounded-lg shadow-lg" />
+
+                        <!-- Close button -->
+                        <button class="absolute top-5 right-5 text-white text-4xl font-bold"
+                            onclick="closeImage()">&times;</button>
+                    </div>
+
+
+               
 
 
 
