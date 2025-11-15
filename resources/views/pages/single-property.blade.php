@@ -27,7 +27,6 @@
                                 <h1 class="text-2xl md:text-4xl font-bold text-gray-900 mb-2">{{ $property->name }}
                                 </h1>
                                 <div class="flex items-center text-gray-600 space-x-2">
-                                    <i class="fa fa-info-circle text-red-900"></i>
                                     <span class="text-sm md:text-base">{{ $property->short_description ?? '' }}</span>
                                 </div>
                             </div>
