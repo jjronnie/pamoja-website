@@ -31,7 +31,7 @@
                                     <span class="text-sm md:text-base">{{ $property->short_description ?? '' }}</span>
                                 </div>
                             </div>
-                            <div class="text-right">
+                            <div class="text-right hidden md:block">
                                 <p class="text-sm text-gray-600 mb-1 mr-4">Category:</p>
 
                                 @php
@@ -44,6 +44,7 @@
                                     </a>
                                 </p>
                             </div>
+
 
 
                         </div>
