@@ -82,7 +82,9 @@ Property::where('is_published', true)->each(function (Property $property) use ($
             );
         });
 
-        // Save the XML file
-        $sitemap->writeToFile(public_path('sitemap.xml'));
+     
+
+            $sitemap->writeToFile(env('SITEMAP_PATH'));
+
     }
 }

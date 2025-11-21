@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('/contact/send', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');
 
 
-
+Route::get('/sitemap.xml', function () {
+    return response()->file(public_path('sitemap.xml'));
+});
 
 
 
