@@ -458,6 +458,7 @@ class GenerateSitemap extends Command
     public function handle()
     {
         $sitemap = Sitemap::create();
+        
 
         // Add static pages
         $sitemap->add(Url::create('/')
@@ -487,11 +488,12 @@ class GenerateSitemap extends Command
 
         // Add dynamic property pages
         Property::all()->each(function (Property $property) use ($sitemap) {
+              $image = $property->getFeaturedImageUrl('preview');
             $sitemap->add(Url::create("/properties/{$property->slug}")
                 ->setLastModificationDate($property->updated_at)
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setPriority(0.8)
-                ->addImage($property->featured_image_url, $property->title));
+                ->addImage($property->getFeaturedImageUrl('preview'), $property->name));
         });
 
         $sitemap->writeToFile(public_path('sitemap.xml'));

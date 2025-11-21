@@ -34,7 +34,7 @@
                         @endif
 
                         <div
-                            class="absolute top-4 right-4 bg-green-700 text-white px-3 md:px-4 py-1 md:py-2 rounded-lg font-semibold text-sm">
+                            class="absolute top-4 right-4 bg-green-600 text-white px-3 md:px-4 py-1 md:py-2 rounded-lg font-semibold text-sm">
                             {{ $property->status ?? '' }}
                         </div>
                         <div class="absolute bottom-4 left-4 flex items-center space-x-2 text-white text-sm">

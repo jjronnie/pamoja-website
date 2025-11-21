@@ -7,9 +7,37 @@
         <div class="container mx-auto">
             <div id="banner-slides" class="text-white relative" style="min-height: 400px;">
 
-                <!-- Slide 1 -->
-                <div class="banner-slide active text-center md:text-left">
+                  <!-- Slide 1 -->
+                <div class="banner-slide  active text-center md:text-left">
                     <p class="text-gray-300 text-base md:text-lg mb-2 md:mb-3">WELCOME TO PAMOJA CHAMBERS</p>
+
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+                        Auctioneering &<br>Property Sales
+                    </h1>
+                    <p class="text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0">
+                        Transparent property auctions and sales services. Find your next opportunity or liquidate assets
+                        efficiently.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="{{ route('contact') }}"
+                            class="bg-red-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-red-800 transition text-base md:text-lg font-semibold inline-flex items-center justify-center">
+                            Get In Touch
+                        </a>
+
+                        <a href="{{ route('properties') }}"
+                            class="bg-white text-red-900 px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-100 transition inline-flex items-center justify-center text-base md:text-lg font-semibold">
+                            <i class="fas fa-home mr-2"></i> View Properties
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- Slide 2 -->
+                <div class="banner-slide  text-center md:text-left">
+                    <p class="text-gray-300 text-base md:text-lg mb-2 md:mb-3">THE DEBT COLLECTORS</p>
+
+
                     <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
                         Professional Debt<br>Collection Services
                     </h1>
@@ -54,29 +82,7 @@
                     </div>
                 </div>
 
-                <!-- Slide 3 -->
-                <div class="banner-slide text-center md:text-left">
-                    <p class="text-gray-300 text-base md:text-lg mb-2 md:mb-3">PROPERTY SOLUTIONS</p>
-                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-                        Auctioneering &<br>Property Sales
-                    </h1>
-                    <p class="text-base md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0">
-                        Transparent property auctions and sales services. Find your next opportunity or liquidate assets
-                        efficiently.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="{{ route('contact') }}"
-                            class="bg-red-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-red-800 transition text-base md:text-lg font-semibold inline-flex items-center justify-center">
-                            Get In Touch
-                        </a>
-
-                        <a href="{{ route('properties') }}"
-                            class="bg-white text-red-900 px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-100 transition inline-flex items-center justify-center text-base md:text-lg font-semibold">
-                            <i class="fas fa-home mr-2"></i> View Properties
-                        </a>
-                    </div>
-                </div>
+              
             </div>
         </div>
 

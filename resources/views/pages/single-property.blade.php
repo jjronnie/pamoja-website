@@ -305,12 +305,12 @@
                                     <i class="fas fa-phone"></i>
                                     <span>+256 393 243 211</span>
                                 </a>
-                                  @php
-                                    $message = urlencode("Hi Pamoja Chambers, I have seen this property on your website
-                                    and I'm
-                                    interested in it. I'd like to discuss further: " . route('properties.show',
-                                    $property->slug));
-                                    @endphp
+                                @php
+                                $message = urlencode("Hi Pamoja Chambers, I have seen this property on your website
+                                and I'm
+                                interested in it. I'd like to discuss further: " . route('properties.show',
+                                $property->slug));
+                                @endphp
 
                                 <a href="https://wa.me/+256776141212?text={{ $message }}" target="_blank"
                                     class="flex items-center justify-center space-x-2 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition w-full">
