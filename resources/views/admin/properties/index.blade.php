@@ -50,9 +50,7 @@
 
 
 
-                  <a href="{{ route('admin.properties.edit', $property) }}" class="btn">
-                 <i data-lucide="pencil" class="w-4 h-4 "></i>
-            </a>
+              
 
                     <x-confirm-modal :action="route('admin.properties.destroy', $property->id)"
                         warning="Are you sure you want to delete this property? This action cannot be undone."

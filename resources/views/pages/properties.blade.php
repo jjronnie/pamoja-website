@@ -33,10 +33,12 @@
                         <x-empty-state message="No Image." />
                         @endif
 
-                        <div
-                            class="absolute top-4 right-4 bg-green-600 text-white px-3 md:px-4 py-1 md:py-2 rounded-lg font-semibold text-sm">
-                            {{ $property->status ?? '' }}
-                        </div>
+                     <div
+    class="absolute top-4 right-4 text-white px-3 md:px-4 py-1 md:py-2 rounded-lg font-semibold text-sm
+    {{ $property->status === 'sold' ? 'bg-red-600' : 'bg-green-600' }}">
+    {{ $property->status === 'sold' ? 'Sold' : 'On Sale' }}
+</div>
+
                         <div class="absolute bottom-4 left-4 flex items-center space-x-2 text-white text-sm">
                             <i class="fas fa-map-marker-alt"></i>
                             <span>{{ $property->location ?? '' }}</span>

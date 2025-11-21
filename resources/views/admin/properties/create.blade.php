@@ -29,24 +29,30 @@
                                 @enderror
                             </div>
 
-                            <!-- Status -->
                             <div>
-                                <label for="status" class="label">Status e.g on sale,sold</label>
-                                <input type="text" name="status" id="status" value="{{ old('status') }}"
-                                    class="input @error('status') border-red-500 @enderror" />
+                                <label for="status" class="label">Status</label>
+                                <select name="status" id="status"
+                                    class="input @error('status') border-red-500 @enderror">
+                                    <option value="">Select status</option>
+                                    <option value="on_sale" {{ old('status')=='on_sale' ? 'selected' : '' }}>On Sale
+                                    </option>
+                                    <option value="sold" {{ old('status')=='sold' ? 'selected' : '' }}>Sold</option>
+                                </select>
+
                                 @error('status')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
-                            </div>                        
+                            </div>
 
 
-                         
 
-                               </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                                   <!-- location -->
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                            <!-- location -->
                             <div>
                                 <label for="location" class="label">Location</label>
                                 <input type="text" name="location" id="location" value="{{ old('location') }}"
@@ -85,7 +91,7 @@
                                 @error('longitude')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
-                            </div>                      
+                            </div>
                         </div>
 
                         <div class="grid grid-cols-1  gap-4">
@@ -96,7 +102,7 @@
                                 @error('description')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
-                            </div>                         
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -110,8 +116,7 @@
 
                     <!-- Upload Button -->
                     <div class="mb-4">
-                        <label for="featured_image"
-                            class="btn">
+                        <label for="featured_image" class="btn">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -239,28 +244,27 @@
                     @enderror
                 </div>
 
-                  <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
 
-                           <!-- Features (Dynamic Key-Value Pairs) -->
-                            <div x-data="{ features: @json(old('features', [])) }">
-                                <label class="label">Features & Custom Fields</label>
-                                <template x-for="(value, key) in features" :key="key">
-                                    <div class="flex space-x-2 mb-2">
-                                        <input type="text" :name="'features[' + key + '][key]'" placeholder="Field Name"
-                                            x-model="features[key].key" class="input flex-1" />
-                                        <input type="text" :name="'features[' + key + '][value]'" placeholder="Value"
-                                            x-model="features[key].value" class="input flex-1" />
-                                        <button type="button" @click="features.splice(key, 1)"
-                                            class="btn">Remove</button>
-                                    </div>
-                                </template>
-                                <button type="button" @click="features.push({key: '', value: ''})" class="btn mt-2">Add
-                                    Feature</button>
-                                @error('features')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
+                    <!-- Features (Dynamic Key-Value Pairs) -->
+                    <div x-data="{ features: @json(old('features', [])) }">
+                        <label class="label">Features & Custom Fields</label>
+                        <template x-for="(value, key) in features" :key="key">
+                            <div class="flex space-x-2 mb-2">
+                                <input type="text" :name="'features[' + key + '][key]'" placeholder="Field Name"
+                                    x-model="features[key].key" class="input flex-1" />
+                                <input type="text" :name="'features[' + key + '][value]'" placeholder="Value"
+                                    x-model="features[key].value" class="input flex-1" />
+                                <button type="button" @click="features.splice(key, 1)" class="btn">Remove</button>
                             </div>
-                  </div>
+                        </template>
+                        <button type="button" @click="features.push({key: '', value: ''})" class="btn mt-2">Add
+                            Feature</button>
+                        @error('features')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
             </div>
         </div>
 

@@ -14,9 +14,13 @@
                         <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
                             <div>
                                 <div class="flex items-center space-x-3 mb-2">
-                                    <span
-                                        class="bg-green-100 text-green-800 px-4 py-1 rounded-lg text-sm font-semibold">{{
-                                        $property->status ?? 'ON SALE' }}</span>
+                                    <span class="px-4 py-1 rounded-lg text-sm font-semibold
+    {{ $property->status === 'sold'
+        ? 'bg-red-100 text-red-800'
+        : 'bg-green-100 text-green-800' }}">
+                                        {{ $property->status === 'sold' ? 'SOLD' : 'ON SALE' }}
+                                    </span>
+
                                     @if($property->is_featured)
                                     <span class="bg-red-900 text-white px-4 py-1 rounded-lg text-sm font-semibold">
                                         Featured
@@ -212,10 +216,11 @@
                                     <x-empty-state message="No Image." />
                                     @endif
 
-                                    <div
-                                        class="absolute top-4 right-4 bg-red-900 text-white px-3 md:px-4 py-1 md:py-2 rounded-lg font-semibold text-sm">
-                                        {{ $property->status ?? '' }}
+                                    <div class="absolute top-4 right-4 text-white px-3 md:px-4 py-1 md:py-2 rounded-lg font-semibold text-sm
+    {{ $property->status === 'sold' ? 'bg-red-600' : 'bg-green-600' }}">
+                                        {{ $property->status === 'sold' ? 'Sold' : 'On Sale' }}
                                     </div>
+
                                     <div
                                         class="absolute bottom-4 left-4 flex items-center space-x-2 text-white text-sm">
                                         <i class="fas fa-map-marker-alt"></i>

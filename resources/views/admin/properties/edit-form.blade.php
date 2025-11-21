@@ -68,15 +68,30 @@
 
 
 
-                            <div>
-                                <label for="status" class="label">status</label>
-                                <input type="text" name="status" id="status"
-                                    value="{{ old('status', $property->status) }}"
-                                    class="input @error('status') border-red-500 @enderror" />
-                                @error('status')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
+                        <div>
+    <label for="status" class="label">Status</label>
+    <select name="status" id="status"
+        class="input @error('status') border-red-500 @enderror">
+
+        <option value="">Select status</option>
+
+        <option value="on_sale"
+            {{ old('status', $property->status) == 'on_sale' ? 'selected' : '' }}>
+            On Sale
+        </option>
+
+        <option value="sold"
+            {{ old('status', $property->status) == 'sold' ? 'selected' : '' }}>
+            Sold
+        </option>
+
+    </select>
+
+    @error('status')
+        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+    @enderror
+</div>
+
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
