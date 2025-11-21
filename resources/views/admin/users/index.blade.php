@@ -58,7 +58,7 @@
             <x-table.cell>
                 <div class="flex items-center">
                     <div class="">
-                        <div class="text-sm font-medium text-gray-900"> {{ $user->creator->name ?? 'n/a' }}</div>
+                        <div class="text-sm font-medium text-gray-900"> {{ $user->creator->name ?? 'System' }}</div>
                         <div class="text-sm text-gray-500"> {{ $user->created_at ?? '' }}</div>
                     </div>
                 </div>

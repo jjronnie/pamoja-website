@@ -28,7 +28,7 @@ Route::get('/sitemap.xml', function () {
 
 Route::middleware(['auth', 'verified', 'pwc'])->group(function () {
 
-    Route::get('/pamoja/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/admin/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('properties', PropertyController::class);
         Route::delete('properties/{property}/gallery/{media}', [PropertyController::class, 'removeGalleryImage'])
