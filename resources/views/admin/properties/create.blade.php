@@ -29,20 +29,7 @@
                                 @enderror
                             </div>
 
-                            <div>
-                                <label for="status" class="label">Status</label>
-                                <select name="status" id="status"
-                                    class="input @error('status') border-red-500 @enderror">
-                                    <option value="" disabled>Select status</option>
-                                    <option value="on_sale" {{ old('status')=='on_sale' ? 'selected' : '' }}>On Sale
-                                    </option>
-                                    <option value="sold" {{ old('status')=='sold' ? 'selected' : '' }}>Sold</option>
-                                </select>
-
-                                @error('status')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
+                          
 
 
 
@@ -216,6 +203,21 @@
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
+                  <div>
+                                <label for="status" class="label">Sale Status</label>
+                                <select name="status" id="status"
+                                    class="input @error('status') border-red-500 @enderror">
+                                    <option value="" disabled>Select status</option>
+                                    <option value="on_sale" {{ old('status')=='on_sale' ? 'selected' : '' }}>On Sale
+                                    </option>
+                                    <option value="sold" {{ old('status')=='sold' ? 'selected' : '' }}>Sold</option>
+                                </select>
+
+                                @error('status')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
 
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Categories <span
