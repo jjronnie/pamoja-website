@@ -9,6 +9,7 @@ use App\Http\Requests\StorePropertyRequest;
 use App\Http\Requests\UpdatePropertyRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use App\Services\SitemapService;
 
 class PropertyController extends Controller
 {
@@ -80,6 +81,8 @@ class PropertyController extends Controller
                     ->toMediaCollection('gallery');
             }
         }
+
+        SitemapService::update();
 
         return redirect()->route('admin.properties.show', $property)
             ->with('success', 'Property created!');
@@ -165,6 +168,8 @@ class PropertyController extends Controller
                     ->toMediaCollection('gallery');
             }
         }
+
+        SitemapService::update();
 
 
         return redirect()->route('admin.properties.show', $property)->with('success', 'Property updated!');

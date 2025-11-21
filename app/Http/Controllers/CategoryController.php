@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Services\SitemapService;
 
 class CategoryController extends Controller
 {
@@ -36,6 +37,8 @@ class CategoryController extends Controller
         $validated['created_by'] = auth()->id();
         Category::create($validated);
 
+         SitemapService::update();
+
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category created successfully.');
     }
@@ -66,6 +69,7 @@ class CategoryController extends Controller
         ]);
 
         $category->update($validated);
+         SitemapService::update();
 
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category updated successfully.');
