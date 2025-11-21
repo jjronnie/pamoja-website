@@ -68,29 +68,29 @@
 
 
 
-                        <div>
-    <label for="status" class="label">Status</label>
-    <select name="status" id="status"
-        class="input @error('status') border-red-500 @enderror">
+                            <div>
+                                <label for="status" class="label">Status</label>
+                                <select name="status" id="status"
+                                    class="input @error('status') border-red-500 @enderror">
 
-        <option value="">Select status</option>
+                                    <option value="">Select status</option>
 
-        <option value="on_sale"
-            {{ old('status', $property->status) == 'on_sale' ? 'selected' : '' }}>
-            On Sale
-        </option>
+                                    <option value="on_sale" {{ old('status', $property->status) == 'on_sale' ?
+                                        'selected' : '' }}>
+                                        On Sale
+                                    </option>
 
-        <option value="sold"
-            {{ old('status', $property->status) == 'sold' ? 'selected' : '' }}>
-            Sold
-        </option>
+                                    <option value="sold" {{ old('status', $property->status) == 'sold' ? 'selected' : ''
+                                        }}>
+                                        Sold
+                                    </option>
 
-    </select>
+                                </select>
 
-    @error('status')
-        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-    @enderror
-</div>
+                                @error('status')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
 
                         </div>
 
