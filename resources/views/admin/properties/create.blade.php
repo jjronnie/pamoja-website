@@ -33,7 +33,7 @@
                                 <label for="status" class="label">Status</label>
                                 <select name="status" id="status"
                                     class="input @error('status') border-red-500 @enderror">
-                                    <option value="">Select status</option>
+                                    <option value="" disabled>Select status</option>
                                     <option value="on_sale" {{ old('status')=='on_sale' ? 'selected' : '' }}>On Sale
                                     </option>
                                     <option value="sold" {{ old('status')=='sold' ? 'selected' : '' }}>Sold</option>

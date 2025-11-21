@@ -73,7 +73,7 @@
                                 <select name="status" id="status"
                                     class="input @error('status') border-red-500 @enderror">
 
-                                    <option value="">Select status</option>
+                                    <option value="" disabled>Select status</option>
 
                                     <option value="on_sale" {{ old('status', $property->status) == 'on_sale' ?
                                         'selected' : '' }}>
