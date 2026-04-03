@@ -97,8 +97,17 @@
         </div>
 
         <div class="border-t border-gray-800 pt-6 md:pt-8 text-center text-gray-400 text-sm md:text-base">
-            <p>&copy; 2025 Pamoja Chambers. All rights reserved. | Powered by <a class="text-gray-100"
-                    href="https://techtowerinc.com" target="_blank" rel="noopener noreferrer">TechTower Inc</a> </p>
-        </div>
+    <p>
+        &copy; {{ now()->year }} Pamoja Chambers. All rights reserved. |
+        Built by
+        <a class="text-gray-100 hover:text-white underline underline-offset-4"
+           href="https://techtowerinc.com"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="TechTower Inc, Website Development Company in Uganda">
+            TechTower Inc
+        </a>
+    </p>
+</div>
     </div>
 </footer>
